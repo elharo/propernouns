@@ -1,0 +1,58 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java-version: ['11', '17', '21']
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up JDK ${{ matrix.java-version }}
+      uses: actions/setup-java@v4
+      with:
+        java-version: ${{ matrix.java-version }}
+        distribution: 'temurin'
+    
+    - name: Cache dependencies
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.m2/repository
+          ~/.gradle/caches
+          ~/.gradle/wrapper
+        key: ${{ runner.os }}-java-${{ matrix.java-version }}-${{ hashFiles('**/pom.xml', '**/*.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          ${{ runner.os }}-java-${{ matrix.java-version }}-
+          ${{ runner.os }}-java-
+    
+    - name: Build with Maven
+      if: hashFiles('**/pom.xml') != ''
+      run: ./mvnw clean compile
+    
+    - name: Test with Maven
+      if: hashFiles('**/pom.xml') != ''
+      run: ./mvnw test
+    
+    - name: Build with Gradle
+      if: hashFiles('**/*.gradle*') != ''
+      run: ./gradlew build
+    
+    - name: Test with Gradle
+      if: hashFiles('**/*.gradle*') != ''
+      run: ./gradlew test
+    
+    - name: Check for source files
+      if: hashFiles('**/pom.xml') == '' && hashFiles('**/*.gradle*') == ''
+      run: |
+        echo "No build configuration found yet. This workflow is ready for when Maven (pom.xml) or Gradle (build.gradle) is added."
+        echo "Current directory contents:"
+        ls -la
