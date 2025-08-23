@@ -27,9 +27,7 @@ jobs:
       with:
         path: |
           ~/.m2/repository
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: ${{ runner.os }}-java-${{ matrix.java-version }}-${{ hashFiles('**/pom.xml', '**/*.gradle*', '**/gradle-wrapper.properties') }}
+        key: ${{ runner.os }}-java-${{ matrix.java-version }}-${{ hashFiles('**/pom.xml') }}
         restore-keys: |
           ${{ runner.os }}-java-${{ matrix.java-version }}-
           ${{ runner.os }}-java-
@@ -42,17 +40,9 @@ jobs:
       if: hashFiles('**/pom.xml') != ''
       run: ./mvnw test
     
-    - name: Build with Gradle
-      if: hashFiles('**/*.gradle*') != ''
-      run: ./gradlew build
-    
-    - name: Test with Gradle
-      if: hashFiles('**/*.gradle*') != ''
-      run: ./gradlew test
-    
     - name: Check for source files
-      if: hashFiles('**/pom.xml') == '' && hashFiles('**/*.gradle*') == ''
+      if: hashFiles('**/pom.xml') == ''
       run: |
-        echo "No build configuration found yet. This workflow is ready for when Maven (pom.xml) or Gradle (build.gradle) is added."
+        echo "No build configuration found yet. This workflow is ready for when Maven (pom.xml) is added."
         echo "Current directory contents:"
         ls -la
