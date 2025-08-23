@@ -7,7 +7,7 @@ Propernames is a Java library to check whether a string is likely to be a proper
 ## Working Effectively
 
 ### Environment Setup
-- Java 17 is available and working: `java -version` and `javac -version`
+- Java 11 is available and working: `java -version` and `javac -version`
 - Maven 3.9.11 is available: `mvn -version`
 
 ### Project Setup (Required - Repository is Currently Empty)
