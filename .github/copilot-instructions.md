@@ -8,25 +8,10 @@ Propernames is a Java library to check whether a string is likely to be a proper
 
 ### Environment Setup
 - Java 11 is available and working: `java -version` and `javac -version`
-- Maven 3.9.11 is available: `mvn -version`
+- Maven 3.9.9 is available: `mvn -version`
 
 ### Project Setup (Required - Repository is Currently Empty)
 The repository currently contains only README.md, LICENSE (GPL v3), and .gitignore. You MUST set up the project structure first:
-
-#### Maven Setup
-```bash
-# Generate Maven project structure - takes ~15 seconds with internet
-mvn archetype:generate \
-  -DgroupId=com.elharo.propernames \
-  -DartifactId=propernames \
-  -DarchetypeArtifactId=maven-archetype-quickstart \
-  -DinteractiveMode=false
-  
-# Move generated files to root
-mv propernames/* .
-mv propernames/.* . 2>/dev/null || true
-rmdir propernames
-```
 
 ### Build and Test Commands
 - **Setup dependencies**: `mvn clean install` - takes ~10 seconds after first download
