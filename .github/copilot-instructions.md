@@ -10,9 +10,6 @@ Propernames is a Java library to check whether a string is likely to be a proper
 - Java 11 is available and working: `java -version` and `javac -version`
 - Maven 3.9.9 is available: `mvn -version`
 
-### Project Setup (Required - Repository is Currently Empty)
-The repository currently contains only README.md, LICENSE (GPL v3), and .gitignore. You MUST set up the project structure first:
-
 ### Build and Test Commands
 - **Setup dependencies**: `mvn clean install` - takes ~10 seconds after first download
 - **Compile**: `mvn clean compile` - takes ~6 seconds
@@ -52,7 +49,7 @@ src/
 
 **CRITICAL**: Always validate that your setup works:
 
-### After Project Setup
+### After Initial Setup
 1. **Verify structure**: `find src -name "*.java" | head -5`
 2. **Test compilation**: Run build command
 3. **Test execution**: Run test command and verify tests pass
@@ -90,7 +87,7 @@ mvn clean package  # Creates target/propernames-*.jar
 
 ### "No such file or directory" errors
 - **Problem**: Repository is empty, no source files exist
-- **Solution**: Follow "Project Setup" section above first
+- **Solution**: Set up the project structure using Maven commands
 
 ### Build failures with missing dependencies
 - **Problem**: Internet connectivity or repository access
