@@ -24,15 +24,12 @@ public class Names {
         }
         
         String trimmed = name.trim();
-        if (trimmed.length() == 0) {
-            return false;
-        }
         
         // Split by spaces to check each word
         String[] words = trimmed.split("\\s+");
         
         for (String word : words) {
-            if (!isValidProperNameWord(word)) {
+            if (!isProperNameWord(word)) {
                 return false;
             }
         }
@@ -41,49 +38,21 @@ public class Names {
     }
     
     /**
-     * Checks if a single word is a valid proper name word.
-     * A valid proper name word should:
-     * - Start with an uppercase letter
-     * - Have remaining letters in lowercase (except for special cases like O'Connor)
-     * - Only contain letters, apostrophes, periods, and hyphens
+     * Checks if a single word is a proper name.
+     * Only contain letters, apostrophes, and hyphens
      */
-    private static boolean isValidProperNameWord(String word) {
+    private static boolean isProperNameWord(String word) {
         if (word.length() == 0) {
             return false;
         }
         
-        // First character must be uppercase
-        if (!Character.isUpperCase(word.charAt(0))) {
-            return false;
-        }
-        
-        boolean foundUpperAfterFirst = false;
-        boolean afterApostrophe = false;
-        
-        for (int i = 1; i < word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            
-            if (Character.isLetter(c)) {
-                if (Character.isUpperCase(c)) {
-                    // Uppercase is only allowed right after apostrophe (like O'Connor)
-                    // or after hyphen (like Mary-Jane)
-                    if (!afterApostrophe && (i == 0 || (word.charAt(i-1) != '\'' && word.charAt(i-1) != '-'))) {
-                        foundUpperAfterFirst = true;
-                    }
-                }
-                afterApostrophe = false;
-            } else if (c == '\'') {
-                afterApostrophe = true;
-            } else if (c == '-' || c == '.') {
-                afterApostrophe = false;
-            } else {
-                // Invalid character
+            if (!Character.isLetter(c) && c != '\'' && c != '-') {
                 return false;
             }
         }
         
-        // If we found uppercase letters after the first character (not after apostrophe or hyphen),
-        // it's not a proper name (like "JOHN")
-        return !foundUpperAfterFirst;
+        return true;
     }
 }
