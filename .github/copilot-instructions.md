@@ -7,7 +7,7 @@ Propernames is a Java library to check whether a string is likely to be a proper
 ## Working Effectively
 
 ### Environment Setup
-- Java 11 is available and working: `java -version` and `javac -version`
+- Java 8 is available and working: `java -version` and `javac -version`
 - Maven 3.9.9 is available: `mvn -version`
 
 ### Build and Test Commands
@@ -31,7 +31,7 @@ mvn checkstyle:check
 ```
 
 ### Testing Framework
-- **Maven**: Uses JUnit 3.x by default (legacy)
+- **Maven**: Uses JUnit 4.x 
 
 ### Directory Structure
 After setup, the standard Java structure will be:
@@ -120,3 +120,15 @@ mvn clean package  # Creates target/propernames-*.jar
 
 ### Project Purpose
 Library to check whether a string is likely to be a proper name (e.g., "John Smith" vs "hello world").
+
+## Project Standards
+- Use Java 8+ language features
+- Follow Google Java code style
+- Include a linefeed as the final character of each source code file
+- Package structure: com.elharo.propernames
+- Write JUnit 4 tests for new functionality
+- Maintain immutability where possible
+- Handle edge cases in Javadoc parsing gracefully
+- Do not use reflection to test. Unit test through public and package private APIs.
+- Do not catch raw java.lang.Exception or java.lang.RuntimeException unless absolutely required by a third party method that throws an undifferentiated exception. Catch only more specific subclasses. Assume most runtime exceptions indicate bugs that should be fixed by preventing the exception from being thrown rather than catching it.
+- When writing a PR description include a link to the issue that is being fixed such as "fixes #146" assuming the PR completely resolves the issue.
