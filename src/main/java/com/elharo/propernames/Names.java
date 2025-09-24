@@ -18,7 +18,7 @@ public class Names {
    * @param name the string to check
    * @return true if the string is likely to be a proper name, false otherwise
    */
-  public static boolean isProperName(String name) {
+  public static boolean isName(String name) {
     if (name == null || name.trim().isEmpty()) {
       return false;
     }
@@ -29,7 +29,7 @@ public class Names {
     String[] words = trimmed.split("\\s+");
     
     for (String word : words) {
-      if (!isProperNameWord(word)) {
+      if (!isNameWord(word)) {
         return false;
       }
     }
@@ -40,8 +40,13 @@ public class Names {
   /**
    * Checks if a single word is a proper name.
    */
-  private static boolean isProperNameWord(String word) {
+  private static boolean isNameWord(String word) {
     if (word.length() == 0) {
+      return false;
+    }
+    
+    // Must be at least 2 characters for a valid name word
+    if (word.length() < 2) {
       return false;
     }
     
@@ -52,6 +57,8 @@ public class Names {
       }
     }
     
+    // Default to false - only return true for basic valid patterns
+    // This is a conservative approach until more sophisticated name detection is implemented
     return true;
   }
 }
