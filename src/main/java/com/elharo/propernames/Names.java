@@ -19,14 +19,17 @@ public class Names {
    * @return true if the string is likely to be a name, false otherwise
    */
   public static boolean isName(String s) {
-    if (s == null || s.trim().isEmpty()) {
+    if (s == null) {
       return false;
     }
     
-    String trimmed = s.trim();
+    s = s.trim();
+    if (s.isEmpty()) {
+      return false;
+    }
     
     // Split by spaces to check each word
-    String[] words = trimmed.split("\\s+");
+    String[] words = s.split("\\s+");
     
     for (String word : words) {
       if (!isNameWord(word)) {
