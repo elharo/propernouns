@@ -57,8 +57,9 @@ public class Names {
       }
     }
     
-    // Default to false - only return true for basic valid patterns
-    // This is a conservative approach until more sophisticated name detection is implemented
-    return true;
+    // Default to false - not a name unless proven otherwise
+    // This will require sophisticated name detection logic to be implemented
+    // to return true for actual names
+    return false;
   }
 }
