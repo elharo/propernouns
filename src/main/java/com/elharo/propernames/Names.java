@@ -13,17 +13,17 @@ public class Names {
   }
   
   /**
-   * Checks whether the given string is likely to be a proper name.
+   * Checks whether the given string is likely to be a name.
    *
-   * @param name the string to check
-   * @return true if the string is likely to be a proper name, false otherwise
+   * @param s the string to check
+   * @return true if the string is likely to be a name, false otherwise
    */
-  public static boolean isName(String name) {
-    if (name == null || name.trim().isEmpty()) {
+  public static boolean isName(String s) {
+    if (s == null || s.trim().isEmpty()) {
       return false;
     }
     
-    String trimmed = name.trim();
+    String trimmed = s.trim();
     
     // Split by spaces to check each word
     String[] words = trimmed.split("\\s+");
