@@ -1,10 +1,15 @@
-# Propernames Java Library
+# Proper Nouns Java Library
 
-Propernames is a Java library to check whether a string is likely to be a proper name. This repository is currently empty (skeleton project) and needs to be set up with a proper Java project structure.
+Propernames is a Java library to check whether a string is likely to be a name or other proper noun. This repository is currently empty (skeleton project) and needs to be set up with a proper Maven project structure.
 
 **Always reference these instructions first and fallback to search or bash commands only when you encounter unexpected information that does not match the info here.**
 
 ## Working Effectively
+
+Keep PRs small and focused. 
+Do not try to do too much in one PR. Each PR should fix
+at most one issue, and many issues wil require multiple smaller PRs.
+Do not try to one shot the entire project.
 
 ### Environment Setup
 - Java 8 is available and working: `java -version` and `javac -version`
