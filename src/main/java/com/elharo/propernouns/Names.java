@@ -1,4 +1,4 @@
-package com.elharo.propernames;
+package com.elharo.propernouns;
 
 /**
  * Utility class to check whether a string is likely to be a proper name.

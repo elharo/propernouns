@@ -5,13 +5,13 @@
   http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   
-  <groupId>com.elharo.propernames</groupId>
+  <groupId>com.elharo.propernouns</groupId>
   <artifactId>propernames</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <name>propernames</name>
-  <description>Library to check whether a string is likely to be a proper name</description>
+  <description>Library to check whether a string is likely to be a name</description>
   
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>

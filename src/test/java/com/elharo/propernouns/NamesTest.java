@@ -1,4 +1,4 @@
-package com.elharo.propernames;
+package com.elharo.propernouns;
 
 import org.junit.Test;
 import static org.junit.Assert.*;
