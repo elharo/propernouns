@@ -1,15 +1,58 @@
 package com.elharo.propernouns;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.HashSet;
+import java.util.Set;
+
 /**
  * Utility class to check whether a string is likely to be a proper name.
  */
 public class Names {
   
   /**
+   * Set of known names loaded from names.txt resource file.
+   * TODO: Consider using a more optimized data structure like a trie for better performance.
+   */
+  private static final Set<String> KNOWN_NAMES;
+  
+  static {
+    // TODO: Consider asynchronous loading of the resource file for better performance.
+    KNOWN_NAMES = loadNamesFromResource();
+  }
+  
+  /**
    * Private constructor to prevent instantiation.
    */
   private Names() {
     // Utility class - prevent instantiation
+  }
+  
+  /**
+   * Loads names from the names.txt resource file into a Set.
+   *
+   * @return Set of names loaded from the resource file
+   */
+  private static Set<String> loadNamesFromResource() {
+    Set<String> names = new HashSet<>();
+    try (InputStream is = Names.class.getResourceAsStream("/names.txt");
+         BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+      
+      String line;
+      while ((line = reader.readLine()) != null) {
+        line = line.trim();
+        if (!line.isEmpty()) {
+          names.add(line.toLowerCase()); // Store in lowercase for case-insensitive comparison
+        }
+      }
+    } catch (IOException e) {
+      // If resource loading fails, return empty set rather than throwing exception
+      // This allows the class to still function, albeit without name recognition
+      System.err.println("Warning: Could not load names.txt resource: " + e.getMessage());
+    }
+    return names;
   }
   
   /**
@@ -60,9 +103,7 @@ public class Names {
       }
     }
     
-    // Default to false - not a name unless proven otherwise
-    // This will require sophisticated name detection logic to be implemented
-    // to return true for actual names
-    return false;
+    // Check if the word (case-insensitive) is in our known names set
+    return KNOWN_NAMES.contains(word.toLowerCase());
   }
 }
