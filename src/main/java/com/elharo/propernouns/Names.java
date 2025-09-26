@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
 import java.util.HashSet;
+import java.util.Locale;
 import java.util.Set;
 
 /**
@@ -32,24 +34,22 @@ public class Names {
   
   /**
    * Loads names from the names.txt resource file into a Set.
-   *
-   * @return Set of names loaded from the resource file
    */
   private static Set<String> loadNamesFromResource() {
     Set<String> names = new HashSet<>();
     try (InputStream is = Names.class.getResourceAsStream("/names.txt");
-         BufferedReader reader = new BufferedReader(new InputStreamReader(is))) {
+         BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
       
       String line;
       while ((line = reader.readLine()) != null) {
         line = line.trim();
         if (!line.isEmpty()) {
-          names.add(line.toLowerCase()); // Store in lowercase for case-insensitive comparison
+          names.add(line.toLowerCase(Locale.ROOT)); // Store in lowercase for case-insensitive comparison
         }
       }
     } catch (IOException e) {
-      // If resource loading fails, return empty set rather than throwing exception
-      // This allows the class to still function, albeit without name recognition
+      // If resource loading fails, return the partial set of names loaded so far
+      // This allows the class to still function with whatever names were successfully loaded
       System.err.println("Warning: Could not load names.txt resource: " + e.getMessage());
     }
     return names;
@@ -104,6 +104,6 @@ public class Names {
     }
     
     // Check if the word (case-insensitive) is in our known names set
-    return KNOWN_NAMES.contains(word.toLowerCase());
+    return KNOWN_NAMES.contains(word.toLowerCase(Locale.ROOT));
   }
 }
