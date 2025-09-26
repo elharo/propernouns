@@ -60,9 +60,22 @@ public class Names {
       }
     }
     
+    // Convert to lowercase for case-insensitive matching
+    String lowerWord = word.toLowerCase();
+    
+    // Heuristic: Names that begin with "o'" (like O'Connell, O'Hara)
+    // Must have at least one letter after "o'"
+    if (lowerWord.startsWith("o'") && word.length() >= 4) {
+      return true;
+    }
+    
+    // Heuristic: Names that begin with "mc" (like McDonald, McTavish)
+    // Must have at least one letter after "mc"
+    if (lowerWord.startsWith("mc") && word.length() >= 4) {
+      return true;
+    }
+    
     // Default to false - not a name unless proven otherwise
-    // This will require sophisticated name detection logic to be implemented
-    // to return true for actual names
     return false;
   }
 }
