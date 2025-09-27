@@ -107,7 +107,34 @@ public class NamesTest {
     assertTrue("John O'Connell should be recognized (John from names.txt, O'Connell from heuristic)", Names.isName("John O'Connell"));
     assertTrue("McDonald Smith should be recognized (McDonald from heuristic, Smith from names.txt)", Names.isName("McDonald Smith"));
   }
-
+  
+  @Test
+  public void testIcelandicDottirNames() {
+    // Test Icelandic names ending in dóttir (with accented ó)
+    assertTrue("Björksdóttir should be recognized as a name", Names.isName("Björksdóttir"));
+    assertTrue("Eriksdóttir should be recognized as a name", Names.isName("Eriksdóttir"));
+    assertTrue("Gunnarsdóttir should be recognized as a name", Names.isName("Gunnarsdóttir"));
+    assertTrue("björksdóttir should be recognized as a name (case insensitive)", Names.isName("björksdóttir"));
+    assertTrue("ERIKSDÓTTIR should be recognized as a name (case insensitive)", Names.isName("ERIKSDÓTTIR"));
+    
+    // Test Icelandic names ending in dottir (without accent)
+    assertTrue("Bjorksdottir should be recognized as a name", Names.isName("Bjorksdottir"));
+    assertTrue("Eriksdottir should be recognized as a name", Names.isName("Eriksdottir"));
+    assertTrue("Gunnarsdottir should be recognized as a name", Names.isName("Gunnarsdottir"));
+    assertTrue("bjorksdottir should be recognized as a name (case insensitive)", Names.isName("bjorksdottir"));
+    assertTrue("ERIKSDOTTIR should be recognized as a name (case insensitive)", Names.isName("ERIKSDOTTIR"));
+    
+    // Edge cases - standalone suffixes should not be names
+    assertFalse("dóttir alone should not be a name", Names.isName("dóttir"));
+    assertFalse("dottir alone should not be a name", Names.isName("dottir"));
+    assertFalse("DÓTTIR alone should not be a name", Names.isName("DÓTTIR"));
+    assertFalse("DOTTIR alone should not be a name", Names.isName("DOTTIR"));
+    
+    // Short prefixes should still work
+    assertTrue("Adóttir should be recognized as a name", Names.isName("Adóttir"));
+    assertTrue("Bdottir should be recognized as a name", Names.isName("Bdottir"));
+  }
+    
   @Test
   public void testMixedApostropheTypes() {
     // Test mixed apostrophe types in multi-word names
