@@ -37,8 +37,8 @@ public class Names {
    */
   private static Set<String> loadNamesFromResource() {
     Set<String> names = new HashSet<>();
-    try (InputStream is = Names.class.getResourceAsStream("/names.txt");
-         BufferedReader reader = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))) {
+    try (InputStream in = Names.class.getResourceAsStream("/names.txt");
+         BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
       
       String line;
       while ((line = reader.readLine()) != null) {
@@ -48,8 +48,8 @@ public class Names {
         }
       }
     } catch (IOException e) {
-      // If resource loading fails, return the partial set of names loaded so far
-      // This allows the class to still function with whatever names were successfully loaded
+      // If resource loading fails, return the partial set of names loaded so far.
+      // This allows the class to still function with whatever names were successfully loaded.
       System.err.println("Warning: Could not load names.txt resource: " + e.getMessage());
     }
     return names;

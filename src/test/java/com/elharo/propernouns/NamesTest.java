@@ -9,13 +9,13 @@ import static org.junit.Assert.*;
 public class NamesTest {
   
   @Test
-  public void testIsProperNameWithInvalidNames() {
+  public void testIsName_withInvalidNames() {
     assertFalse("numbers should not be a proper name", Names.isName("John123"));
     assertFalse("special chars should not be a proper name", Names.isName("John@Smith"));
   }
   
   @Test
-  public void testIsProperNameWithInvalidInputs() {
+  public void testIsName_withInvalidInputs() {
     assertFalse("null should not be a proper name", Names.isName(null));
     assertFalse("empty string should not be a proper name", Names.isName(""));
     assertFalse("whitespace should not be a proper name", Names.isName("   "));
@@ -23,7 +23,7 @@ public class NamesTest {
   }
   
   @Test
-  public void testIsProperNameWithKnownNames() {
+  public void testIsName_withKnownNames() {
     // Test names from names.txt (case sensitive)
     assertTrue("John should be recognized as a proper name", Names.isName("John"));
     assertTrue("Smith should be recognized as a proper name", Names.isName("Smith"));
@@ -33,7 +33,7 @@ public class NamesTest {
   }
   
   @Test
-  public void testIsProperNameCaseInsensitive() {
+  public void testIsName_caseInsensitive() {
     // Test case insensitive matching
     assertTrue("john should be recognized as a proper name (lowercase)", Names.isName("john"));
     assertTrue("SMITH should be recognized as a proper name (uppercase)", Names.isName("SMITH"));
@@ -41,7 +41,7 @@ public class NamesTest {
   }
   
   @Test
-  public void testIsProperNameWithFullNames() {
+  public void testIsName_withFullNames() {
     // Test full names (multiple words, all must be recognized)
     assertTrue("John Smith should be recognized as a proper name", Names.isName("John Smith"));
     assertTrue("James Anderson should be recognized as a proper name", Names.isName("James Anderson"));
@@ -52,7 +52,7 @@ public class NamesTest {
   }
   
   @Test
-  public void testIsProperNameWithUnknownNames() {
+  public void testIsName_withUnknownNames() {
     // Test names not in names.txt
     assertFalse("Unknown single name should not be recognized", Names.isName("Zxcvbnm"));
     assertFalse("Mixed known/unknown should not be recognized", Names.isName("John Zxcvbnm"));
