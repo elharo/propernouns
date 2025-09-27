@@ -24,7 +24,7 @@ public class NamesTest {
   
   @Test
   public void testIsName_withKnownNames() {
-    // Test names from names.txt (case sensitive)
+    // Test names from names.txt
     assertTrue("John should be recognized as a proper name", Names.isName("John"));
     assertTrue("Smith should be recognized as a proper name", Names.isName("Smith"));
     assertTrue("Beth should be recognized as a proper name", Names.isName("Beth"));
@@ -53,8 +53,46 @@ public class NamesTest {
   
   @Test
   public void testIsName_withUnknownNames() {
-    // Test names not in names.txt
+    // Test names not in names.txt that also don't match heuristics
     assertFalse("Unknown single name should not be recognized", Names.isName("Zxcvbnm"));
     assertFalse("Mixed known/unknown should not be recognized", Names.isName("John Zxcvbnm"));
+  }
+  
+  @Test
+  public void testOApostropheNames() {
+    assertTrue("O'Connell should be recognized as a name", Names.isName("O'Connell"));
+    assertTrue("O'Hara should be recognized as a name", Names.isName("O'Hara"));
+    assertTrue("O'Brien should be recognized as a name", Names.isName("O'Brien"));
+    assertTrue("o'connell should be recognized as a name (case insensitive)", Names.isName("o'connell"));
+    assertTrue("O'HARA should be recognized as a name (case insensitive)", Names.isName("O'HARA"));
+    
+    // Edge cases for O' names
+    assertFalse("O' alone should not be a name", Names.isName("O'"));
+    assertFalse("O'X should not be a name (too short)", Names.isName("O'X"));
+  }
+  
+  @Test
+  public void testMcNames() {
+    assertTrue("McDonald should be recognized as a name", Names.isName("McDonald"));
+    assertTrue("McTavish should be recognized as a name", Names.isName("McTavish"));
+    assertTrue("McCoy should be recognized as a name", Names.isName("McCoy"));
+    assertTrue("mcdonald should be recognized as a name (case insensitive)", Names.isName("mcdonald"));
+    assertTrue("MCTAVISH should be recognized as a name (case insensitive)", Names.isName("MCTAVISH"));
+    
+    // Edge cases for Mc names
+    assertFalse("Mc alone should not be a name", Names.isName("Mc"));
+    assertFalse("McX should not be a name (too short)", Names.isName("McX"));
+  }
+  
+  @Test
+  public void testMultipleWordNames() {
+    assertTrue("O'Connell McDonald should be recognized as a name", Names.isName("O'Connell McDonald"));
+    assertTrue("McTavish O'Hara should be recognized as a name", Names.isName("McTavish O'Hara"));
+    assertFalse("O'Connell 123 should not be a name", Names.isName("O'Connell 123"));
+    assertFalse("McDonald invalid@ should not be a name", Names.isName("McDonald invalid@"));
+    
+    // Mixed names from file and heuristics
+    assertTrue("John O'Connell should be recognized (John from names.txt, O'Connell from heuristic)", Names.isName("John O'Connell"));
+    assertTrue("McDonald Smith should be recognized (McDonald from heuristic, Smith from names.txt)", Names.isName("McDonald Smith"));
   }
 }
