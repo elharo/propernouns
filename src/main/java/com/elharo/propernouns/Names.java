@@ -98,7 +98,7 @@ public class Names {
     
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
-      if (!Character.isLetter(c) && c != '\'' && c != '-') {
+      if (!Character.isLetter(c) && c != '\'' && c != '\u2019' && c != '-') {
         return false;
       }
     }
@@ -113,7 +113,8 @@ public class Names {
     
     // Heuristic: Names that begin with "o'" (like O'Connell, O'Hara)
     // Must have at least one letter after "o'"
-    if (word.startsWith("o'") && word.length() >= 4) {
+    // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
+    if ((word.startsWith("o'") || word.startsWith("o\u2019")) && word.length() >= 4) {
       return true;
     }
     
