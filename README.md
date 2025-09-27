@@ -13,4 +13,4 @@ There are already heuristics that identify many Irish, Scottish, and Icelandic s
 If you happen to need one or more names added to the checks, send a PR that adds them to
 src/main/resources/names.txt.
 
-Nouns that commonly serve as both names and common nounds will not be reported as names. 
+Nouns that commonly serve as both names and common nouns will not be reported as names. 
