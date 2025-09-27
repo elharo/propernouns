@@ -123,6 +123,13 @@ public class Names {
       return true;
     }
     
+    // Heuristic: Icelandic names ending in "dóttir" or "dottir" (like Björksdóttir, Eriksdottir)
+    // Must have a prefix before the suffix
+    if ((word.endsWith("dóttir") && word.length() > 6)
+        || (word.endsWith("dottir") && word.length() > 6)) {
+      return true;
+    }
+    
     // Default to false - not a name unless proven otherwise
     return false;
   }
