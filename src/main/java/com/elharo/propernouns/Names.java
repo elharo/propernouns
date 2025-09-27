@@ -114,7 +114,8 @@ public class Names {
     // Heuristic: Names that begin with "o'" (like O'Connell, O'Hara)
     // Must have at least one letter after "o'"
     // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
-    if ((word.startsWith("o'") || word.startsWith("o\u2019")) && word.length() >= 4) {
+    if ((word.startsWith("o'") || word.startsWith("o\u2019")) 
+        && word.length() >= 4) {
       return true;
     }
     
