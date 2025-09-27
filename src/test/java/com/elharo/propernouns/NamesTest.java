@@ -9,17 +9,53 @@ import static org.junit.Assert.*;
 public class NamesTest {
   
   @Test
-  public void testIsProperNameWithInvalidNames() {
+  public void testIsName_withInvalidNames() {
     assertFalse("numbers should not be a proper name", Names.isName("John123"));
     assertFalse("special chars should not be a proper name", Names.isName("John@Smith"));
   }
   
   @Test
-  public void testIsProperNameWithInvalidInputs() {
+  public void testIsName_withInvalidInputs() {
     assertFalse("null should not be a proper name", Names.isName(null));
     assertFalse("empty string should not be a proper name", Names.isName(""));
     assertFalse("whitespace should not be a proper name", Names.isName("   "));
     assertFalse("periods should not be a proper name", Names.isName("Dr. Smith"));
+  }
+  
+  @Test
+  public void testIsName_withKnownNames() {
+    // Test names from names.txt
+    assertTrue("John should be recognized as a proper name", Names.isName("John"));
+    assertTrue("Smith should be recognized as a proper name", Names.isName("Smith"));
+    assertTrue("Beth should be recognized as a proper name", Names.isName("Beth"));
+    assertTrue("James should be recognized as a proper name", Names.isName("James"));
+    assertTrue("Susan should be recognized as a proper name", Names.isName("Susan"));
+  }
+  
+  @Test
+  public void testIsName_caseInsensitive() {
+    // Test case insensitive matching
+    assertTrue("john should be recognized as a proper name (lowercase)", Names.isName("john"));
+    assertTrue("SMITH should be recognized as a proper name (uppercase)", Names.isName("SMITH"));
+    assertTrue("Anderson should be recognized as a proper name (mixed case)", Names.isName("Anderson"));
+  }
+  
+  @Test
+  public void testIsName_withFullNames() {
+    // Test full names (multiple words, all must be recognized)
+    assertTrue("John Smith should be recognized as a proper name", Names.isName("John Smith"));
+    assertTrue("James Anderson should be recognized as a proper name", Names.isName("James Anderson"));
+    assertTrue("Beth Johnson should be recognized as a proper name", Names.isName("Beth Johnson"));
+    
+    // Test mixed case full names
+    assertTrue("john smith should be recognized (lowercase)", Names.isName("john smith"));
+  }
+  
+  @Test
+  public void testIsName_withUnknownNames() {
+    // Test names not in names.txt that also don't match heuristics
+    assertFalse("Unknown single name should not be recognized", Names.isName("Zxcvbnm"));
+    assertFalse("Mixed known/unknown should not be recognized", Names.isName("John Zxcvbnm"));
   }
   
   @Test
@@ -55,8 +91,8 @@ public class NamesTest {
     assertFalse("O'Connell 123 should not be a name", Names.isName("O'Connell 123"));
     assertFalse("McDonald invalid@ should not be a name", Names.isName("McDonald invalid@"));
     
-    // Names that don't match the heuristics should return false
-    assertFalse("O'Connell Smith should not be recognized (Smith doesn't match heuristics)", Names.isName("O'Connell Smith"));
-    assertFalse("John McDonald should not be recognized (John doesn't match heuristics)", Names.isName("John McDonald"));
+    // Mixed names from file and heuristics
+    assertTrue("John O'Connell should be recognized (John from names.txt, O'Connell from heuristic)", Names.isName("John O'Connell"));
+    assertTrue("McDonald Smith should be recognized (McDonald from heuristic, Smith from names.txt)", Names.isName("McDonald Smith"));
   }
 }
