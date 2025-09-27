@@ -60,15 +60,27 @@ public class NamesTest {
   
   @Test
   public void testOApostropheNames() {
+    // Test with straight apostrophe
     assertTrue("O'Connell should be recognized as a name", Names.isName("O'Connell"));
     assertTrue("O'Hara should be recognized as a name", Names.isName("O'Hara"));
     assertTrue("O'Brien should be recognized as a name", Names.isName("O'Brien"));
     assertTrue("o'connell should be recognized as a name (case insensitive)", Names.isName("o'connell"));
     assertTrue("O'HARA should be recognized as a name (case insensitive)", Names.isName("O'HARA"));
     
-    // Edge cases for O' names
+    // Test with curly apostrophe (U+2019)
+    assertTrue("O\u2019Connell should be recognized as a name", Names.isName("O\u2019Connell"));
+    assertTrue("O\u2019Hara should be recognized as a name", Names.isName("O\u2019Hara"));
+    assertTrue("O\u2019Brien should be recognized as a name", Names.isName("O\u2019Brien"));
+    assertTrue("o\u2019connell should be recognized as a name (case insensitive)", Names.isName("o\u2019connell"));
+    assertTrue("O\u2019HARA should be recognized as a name (case insensitive)", Names.isName("O\u2019HARA"));
+    
+    // Edge cases for O' names with straight apostrophe
     assertFalse("O' alone should not be a name", Names.isName("O'"));
     assertFalse("O'X should not be a name (too short)", Names.isName("O'X"));
+    
+    // Edge cases for O' names with curly apostrophe (U+2019)
+    assertFalse("O\u2019 alone should not be a name", Names.isName("O\u2019"));
+    assertFalse("O\u2019X should not be a name (too short)", Names.isName("O\u2019X"));
   }
   
   @Test
@@ -121,5 +133,16 @@ public class NamesTest {
     // Short prefixes should still work
     assertTrue("Adóttir should be recognized as a name", Names.isName("Adóttir"));
     assertTrue("Bdottir should be recognized as a name", Names.isName("Bdottir"));
+  }
+    
+  @Test
+  public void testMixedApostropheTypes() {
+    // Test mixed apostrophe types in multi-word names
+    assertTrue("O'Connell O\u2019Hara should be recognized (mixed apostrophe types)", Names.isName("O'Connell O\u2019Hara"));
+    assertTrue("O\u2019Brien O'Malley should be recognized (mixed apostrophe types)", Names.isName("O\u2019Brien O'Malley"));
+    
+    // Test that both apostrophe types work in character validation with simple apostrophe names
+    assertTrue("Name with straight apostrophe should be valid", Names.isName("O'Test"));
+    assertTrue("Name with curly apostrophe should be valid", Names.isName("O\u2019Test")); 
   }
 }
