@@ -103,23 +103,23 @@ public class Names {
       }
     }
     
-    // Check if the word (case-insensitive) is in our known names set
-    if (KNOWN_NAMES.contains(word.toLowerCase(Locale.ROOT))) {
+    // Convert to lowercase once for all case-insensitive comparisons
+    word = word.toLowerCase(Locale.ROOT);
+    
+    // Check if the word is in our known names set
+    if (KNOWN_NAMES.contains(word)) {
       return true;
     }
     
-    // Convert to lowercase for case-insensitive matching
-    String lowerWord = word.toLowerCase(Locale.ROOT);
-    
     // Heuristic: Names that begin with "o'" (like O'Connell, O'Hara)
     // Must have at least one letter after "o'"
-    if (lowerWord.startsWith("o'") && word.length() >= 4) {
+    if (word.startsWith("o'") && word.length() >= 4) {
       return true;
     }
     
     // Heuristic: Names that begin with "mc" (like McDonald, McTavish)
     // Must have at least one letter after "mc"
-    if (lowerWord.startsWith("mc") && word.length() >= 4) {
+    if (word.startsWith("mc") && word.length() >= 4) {
       return true;
     }
     
