@@ -377,6 +377,7 @@ gould
 grace
 graham
 grayson
+greco
 greyson
 guerrero
 gutierrez
@@ -453,8 +454,13 @@ javier
 jax
 jaxon
 jaya
+jeanne
+jen
+jenn
+jennifer
 jennings
 jesse
+jesus
 jimenez
 jocelyn
 joel
@@ -559,7 +565,7 @@ luis
 luka
 luke
 luna
-lyric
+lynn
 mabel
 macedo
 machado
@@ -596,14 +602,8 @@ max
 maxwell
 maya
 mayer
-mccarty
-mcclain
-mccoy
-mcdaniel
-mcdonald
-mcgrath
-mckay
-mckenzie
+macdaniel
+macdonald
 medina
 medrano
 melanie
