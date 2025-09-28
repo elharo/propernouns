@@ -56,8 +56,10 @@ public class Names {
   }
   
   /**
-   * Checks whether the given string is likely to be a name.
-   *
+   * Checks whether the given string is very likely to be a name.
+   * Strings that are commonly used as both names and common nouns
+   * such as "Jewel", "Opal", and "Crystal" return false.
+   * 
    * @param s the string to check
    * @return true if the string is likely to be a name, false otherwise
    */
