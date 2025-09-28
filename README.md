@@ -3,6 +3,8 @@
 [![CI](https://github.com/elharo/propernames/actions/workflows/ci.yml/badge.svg)](https://github.com/elharo/propernames/actions/workflows/ci.yml)
 
 Library to check whether a string is likely to be a name or other proper noun.
+The methods are deliberately case insensitive since the motivating purpose is to
+support correction of possibly incorrect casing.
 
 This library was needed to fix a particular problem, and is the simplest thing
 that could possibly work. It is not and cannot be exhaustive.
