@@ -34,23 +34,29 @@ public class Names {
   
   /**
    * Loads names from the names.txt resource file into a Set.
+   *
+   * @return Set of names loaded from the resource file
    */
   private static Set<String> loadNamesFromResource() {
     Set<String> names = new HashSet<>();
     try (InputStream in = Names.class.getResourceAsStream("/names.txt");
-         BufferedReader reader = new BufferedReader(new InputStreamReader(in, StandardCharsets.UTF_8))) {
-      
+         BufferedReader reader = new BufferedReader(
+             new InputStreamReader(in, StandardCharsets.UTF_8))) {
+
       String line;
       while ((line = reader.readLine()) != null) {
         line = line.trim();
         if (!line.isEmpty()) {
-          names.add(line.toLowerCase(Locale.ROOT)); // Store in lowercase for case-insensitive comparison
+          // Store in lowercase for case-insensitive comparison
+          names.add(line.toLowerCase(Locale.ROOT));
         }
       }
     } catch (IOException e) {
-      // If resource loading fails, return the partial set of names loaded so far.
-      // This allows the class to still function with whatever names were successfully loaded.
-      System.err.println("Warning: Could not load names.txt resource: " + e.getMessage());
+      // If resource loading fails, return the partial set of names loaded
+      // so far. This allows the class to still function with whatever names
+      // were successfully loaded.
+      System.err.println("Warning: Could not load names.txt resource: "
+                         + e.getMessage());
     }
     return names;
   }
@@ -59,97 +65,107 @@ public class Names {
    * Checks whether the given string is very likely to be a name.
    * Strings that are commonly used as both names and common nouns
    * such as "Jewel", "Opal", and "Crystal" return false.
-   * 
+   *
    * @param s the string to check
    * @return true if the string is likely to be a name, false otherwise
    */
-  public static boolean isName(String s) {
+  public static boolean isName(final String s) {
     if (s == null) {
       return false;
     }
-    
-    s = s.trim();
-    if (s.isEmpty()) {
+
+    String trimmed = s.trim();
+    if (trimmed.isEmpty()) {
       return false;
     }
-    
+
     // Split by spaces to check each word
-    String[] words = s.split("\\s+");
-    
+    String[] words = trimmed.split("\\s+");
+
     for (String word : words) {
       if (!isNameWord(word)) {
         return false;
       }
     }
-    
+
     return true;
   }
   
   /**
    * Checks if a single word is a proper name.
+   *
+   * @param word the word to check
+   * @return true if the word is likely to be a name, false otherwise
    */
-  private static boolean isNameWord(String word) {
+  private static boolean isNameWord(final String word) {
     if (word.length() == 0) {
       return false;
     }
-    
+
     // Must be at least 2 characters for a valid name word
     if (word.length() < 2) {
       return false;
     }
-    
+
     for (int i = 0; i < word.length(); i++) {
       char c = word.charAt(i);
       if (!Character.isLetter(c) && c != '\'' && c != '\u2019' && c != '-') {
         return false;
       }
     }
-    
+
     // Convert to lowercase once for all case-insensitive comparisons
-    word = word.toLowerCase(Locale.ROOT);
-    
+    String lowerWord = word.toLowerCase(Locale.ROOT);
+
     // Check if the word is in our known names set
-    if (KNOWN_NAMES.contains(word)) {
+    if (KNOWN_NAMES.contains(lowerWord)) {
       return true;
     }
-    
+
+    final int minApostropheNameLength = 4;
+
     // Heuristic: Names that begin with "o'" (like O'Connell, O'Hara)
     // Must have at least one letter after "o'"
     // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
-    if ((word.startsWith("o'") || word.startsWith("o\u2019")) 
-        && word.length() >= 4) {
+    if ((lowerWord.startsWith("o'") || lowerWord.startsWith("o\u2019"))
+        && lowerWord.length() >= minApostropheNameLength) {
       return true;
     }
-    
+
     // Heuristic: Names that begin with "d'" (like d'Angelo, d'Alembert)
     // Must have at least one letter after "d'"
     // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
-    if ((word.startsWith("d'") || word.startsWith("d\u2019")) 
-        && word.length() >= 4) {
+    if ((lowerWord.startsWith("d'") || lowerWord.startsWith("d\u2019"))
+        && lowerWord.length() >= minApostropheNameLength) {
       return true;
     }
-    
+
     // Heuristic: Names that begin with "l'" (like L'Hôpital, L'Amour)
     // Must have at least one letter after "l'"
     // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
-    if ((word.startsWith("l'") || word.startsWith("l\u2019")) 
-        && word.length() >= 4) {
+    if ((lowerWord.startsWith("l'") || lowerWord.startsWith("l\u2019"))
+        && lowerWord.length() >= minApostropheNameLength) {
       return true;
     }
-    
+
     // Heuristic: Names that begin with "mc" (like McDonald, McTavish)
     // Must have at least one letter after "mc"
-    if (word.startsWith("mc") && word.length() >= 4) {
+    if (lowerWord.startsWith("mc")
+        && lowerWord.length() >= minApostropheNameLength) {
       return true;
     }
-    
-    // Heuristic: Icelandic names ending in "dóttir" or "dottir" (like Björksdóttir, Eriksdottir)
+
+    final int minDottirNameLength = 6;
+    // Heuristic: Icelandic names ending in "dóttir" or "dottir"
+    // (like Björksdóttir, Eriksdottir)
     // Must have a prefix before the suffix
-    if ((word.endsWith("dóttir") && word.length() > 6)
-        || (word.endsWith("dottir") && word.length() > 6)) {
+    if ((lowerWord.endsWith("dóttir")
+         && lowerWord.length() > minDottirNameLength)
+        || (lowerWord.endsWith("dottir")
+            && lowerWord.length() > minDottirNameLength)) {
       return true;
     }
-    
+
     // Default to false - not a name unless proven otherwise
     return false;
   }
