@@ -121,6 +121,22 @@ public class Names {
       return true;
     }
     
+    // Heuristic: Names that begin with "d'" (like d'Angelo, d'Alembert)
+    // Must have at least one letter after "d'"
+    // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
+    if ((word.startsWith("d'") || word.startsWith("d\u2019")) 
+        && word.length() >= 4) {
+      return true;
+    }
+    
+    // Heuristic: Names that begin with "l'" (like L'Hôpital, L'Amour)
+    // Must have at least one letter after "l'"
+    // Support both straight apostrophe (U+0027) and curly apostrophe (U+2019)
+    if ((word.startsWith("l'") || word.startsWith("l\u2019")) 
+        && word.length() >= 4) {
+      return true;
+    }
+    
     // Heuristic: Names that begin with "mc" (like McDonald, McTavish)
     // Must have at least one letter after "mc"
     if (word.startsWith("mc") && word.length() >= 4) {

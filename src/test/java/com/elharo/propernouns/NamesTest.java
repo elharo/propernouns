@@ -136,13 +136,67 @@ public class NamesTest {
   }
     
   @Test
+  public void testDApostropheNames() {
+    // Test with straight apostrophe
+    assertTrue("d'Angelo should be recognized as a name", Names.isName("d'Angelo"));
+    assertTrue("d'Alembert should be recognized as a name", Names.isName("d'Alembert"));
+    assertTrue("D'Artagnan should be recognized as a name", Names.isName("D'Artagnan"));
+    assertTrue("d'angelo should be recognized as a name (case insensitive)", Names.isName("d'angelo"));
+    assertTrue("D'ALEMBERT should be recognized as a name (case insensitive)", Names.isName("D'ALEMBERT"));
+    
+    // Test with curly apostrophe (U+2019)
+    assertTrue("d\u2019Angelo should be recognized as a name", Names.isName("d\u2019Angelo"));
+    assertTrue("d\u2019Alembert should be recognized as a name", Names.isName("d\u2019Alembert"));
+    assertTrue("D\u2019Artagnan should be recognized as a name", Names.isName("D\u2019Artagnan"));
+    assertTrue("d\u2019angelo should be recognized as a name (case insensitive)", Names.isName("d\u2019angelo"));
+    assertTrue("D\u2019ALEMBERT should be recognized as a name (case insensitive)", Names.isName("D\u2019ALEMBERT"));
+    
+    // Edge cases for d' names with straight apostrophe
+    assertFalse("d' alone should not be a name", Names.isName("d'"));
+    assertFalse("d'X should not be a name (too short)", Names.isName("d'X"));
+    
+    // Edge cases for d' names with curly apostrophe (U+2019)
+    assertFalse("d\u2019 alone should not be a name", Names.isName("d\u2019"));
+    assertFalse("d\u2019X should not be a name (too short)", Names.isName("d\u2019X"));
+  }
+
+  @Test
+  public void testLApostropheNames() {
+    // Test with straight apostrophe
+    assertTrue("L'Hôpital should be recognized as a name", Names.isName("L'Hôpital"));
+    assertTrue("L'Amour should be recognized as a name", Names.isName("L'Amour"));
+    assertTrue("l'hopital should be recognized as a name (case insensitive)", Names.isName("l'hopital"));
+    assertTrue("L'AMOUR should be recognized as a name (case insensitive)", Names.isName("L'AMOUR"));
+    
+    // Test with curly apostrophe (U+2019)
+    assertTrue("L\u2019Hôpital should be recognized as a name", Names.isName("L\u2019Hôpital"));
+    assertTrue("L\u2019Amour should be recognized as a name", Names.isName("L\u2019Amour"));
+    assertTrue("l\u2019hopital should be recognized as a name (case insensitive)", Names.isName("l\u2019hopital"));
+    assertTrue("L\u2019AMOUR should be recognized as a name (case insensitive)", Names.isName("L\u2019AMOUR"));
+    
+    // Edge cases for l' names with straight apostrophe
+    assertFalse("l' alone should not be a name", Names.isName("l'"));
+    assertFalse("l'X should not be a name (too short)", Names.isName("l'X"));
+    
+    // Edge cases for l' names with curly apostrophe (U+2019)
+    assertFalse("l\u2019 alone should not be a name", Names.isName("l\u2019"));
+    assertFalse("l\u2019X should not be a name (too short)", Names.isName("l\u2019X"));
+  }
+
+  @Test
   public void testMixedApostropheTypes() {
     // Test mixed apostrophe types in multi-word names
     assertTrue("O'Connell O\u2019Hara should be recognized (mixed apostrophe types)", Names.isName("O'Connell O\u2019Hara"));
     assertTrue("O\u2019Brien O'Malley should be recognized (mixed apostrophe types)", Names.isName("O\u2019Brien O'Malley"));
     
+    // Test d' and l' with mixed apostrophe types
+    assertTrue("d'Angelo L\u2019Hôpital should be recognized (mixed apostrophe types)", Names.isName("d'Angelo L\u2019Hôpital"));
+    assertTrue("L'Amour d\u2019Alembert should be recognized (mixed apostrophe types)", Names.isName("L'Amour d\u2019Alembert"));
+    
     // Test that both apostrophe types work in character validation with simple apostrophe names
     assertTrue("Name with straight apostrophe should be valid", Names.isName("O'Test"));
     assertTrue("Name with curly apostrophe should be valid", Names.isName("O\u2019Test")); 
+    assertTrue("D' name with straight apostrophe should be valid", Names.isName("d'Test"));
+    assertTrue("L' name with curly apostrophe should be valid", Names.isName("L\u2019Test"));
   }
 }
