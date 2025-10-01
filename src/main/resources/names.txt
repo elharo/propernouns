@@ -166,6 +166,7 @@ barela
 barnes
 barrera
 barron
+bart
 bartlett
 barton
 basile
@@ -279,6 +280,7 @@ candelaria
 cantrell
 caputo
 cardenas
+carl
 carla
 carlos
 carlson
@@ -653,6 +655,7 @@ hardin
 hargrove
 harlee
 harlow
+harold
 harrison
 härtel
 hartman
@@ -699,6 +702,7 @@ holm
 holmes
 hólmfríður
 holub
+homer
 hoogendoorn
 horáček
 horák
@@ -974,10 +978,12 @@ lehmann
 leia
 leilani
 lemoine
+len
 lena
 leni
 lennon
 lennox
+lenny
 leo
 leon
 leonardo
@@ -1002,6 +1008,7 @@ lin
 lina
 lincoln
 lis
+lisa
 lloyd
 lóa
 lofton
@@ -1049,6 +1056,7 @@ madeline
 madison
 maël
 magdalena
+maggie
 magnús
 magnússon
 maier
@@ -1075,6 +1083,7 @@ marco
 marcus
 margaretha
 margaux
+marge
 margot
 margrét
 maria
@@ -1147,6 +1156,7 @@ mireille
 miriam
 miroslav
 mitchell
+moe
 moen
 mohammed
 molenaar
@@ -1485,6 +1495,7 @@ silvia
 simon
 šimon
 simone
+simpson
 škoda
 skogen
 skylar
