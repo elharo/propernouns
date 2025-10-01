@@ -17,8 +17,9 @@ src/main/resources/names.txt.
 
 Nouns that commonly serve as both names and common nouns will not be reported as names.
 
-Since this library was built for the purpose of determining word case, it does not include names from scripts that do not distinguish upper and lower case
-such as Chinese, Arabic, and Hebrew. Case is primarily a feature of Latin. Greek, and Cyrillic scripts.
+Since this library was built for the purpose of determining word case, it does not include names
+from scripts that do not distinguish upper and lower case
+such as Chinese, Arabic, and Hebrew. Case is primarily a feature of Latin, Greek, and Cyrillic scripts.
 
 Some other lists of names:
 
