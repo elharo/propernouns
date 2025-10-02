@@ -12,7 +12,7 @@ Before releasing, ensure you have completed the one-time setup requirements:
 - GPG key for artifact signing
 - Maven settings.xml configured with credentials
 
-For detailed setup instructions, see the [Sonatype Central Publishing Guide](https://central.sonatype.org/publish/publish-guide/).
+For detailed setup instructions, see the [Central Portal Documentation](https://central.sonatype.com/publishing).
 
 ## Release Process
 
@@ -173,6 +173,6 @@ mvn help:effective-pom
 
 ### Support
 
-- [Sonatype Central Documentation](https://central.sonatype.org/publish/publish-guide/)
+- [Central Portal Documentation](https://central.sonatype.com/publishing)
 - [Maven Central Documentation](https://maven.apache.org/repository/guide-central-repository-upload.html)
 - [Sonatype Support](https://issues.sonatype.org/)
