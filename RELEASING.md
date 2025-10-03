@@ -8,7 +8,7 @@ propernames is a single-artifact Maven project that provides a library to check 
 
 Before releasing, ensure you have completed the one-time setup requirements:
 
-- Sonatype Central account with access to `com.elharo.propernouns` groupId
+- Sonatype Central account with access to `com.elharo` groupId
 - GPG key for artifact signing
 - Maven settings.xml configured with credentials
 
@@ -130,14 +130,14 @@ After release, verify the artifacts are available for download:
 1. **Direct repository check** (available immediately):
    ```bash
    # Test downloading the library
-   mvn dependency:get -Dartifact=com.elharo.propernouns:propernouns:<VERSION>
+   mvn dependency:get -Dartifact=com.elharo:propernouns:<VERSION>
    ```
 
 2. **Direct URL check** (available immediately):
-   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/propernouns/<VERSION>/`
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/<VERSION>/`
 
 3. **Maven Central Search** (may take several hours to update):
-   - [Search results](https://search.maven.org/search?q=g:com.elharo.propernouns)
+   - [Search results](https://search.maven.org/search?q=g:com.elharo)
    - Note: Search indexing can lag behind artifact availability by many hours
 
 ## Usage After Release
@@ -148,7 +148,7 @@ Once released, users can use the library:
 
 ```xml
 <dependency>
-  <groupId>com.elharo.propernouns</groupId>
+  <groupId>com.elharo</groupId>
   <artifactId>propernouns</artifactId>
   <version>VERSION</version>
 </dependency>
