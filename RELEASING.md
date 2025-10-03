@@ -19,6 +19,11 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 ### 0. Create a release branch
 
 ```bash
+# Ensure you're on main and have the latest changes
+git checkout main
+git pull origin main
+
+# Create the release branch
 git checkout -b release/<VERSION>
 ```
 
