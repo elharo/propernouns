@@ -1,8 +1,8 @@
-# Releasing propernames to Maven Central
+# Releasing propernouns to Maven Central
 
-This document explains how to upload the propernames library to Maven Central.
+This document explains how to upload the propernouns library to Maven Central.
 
-propernames is a single-artifact Maven project that provides a library to check whether a string is likely to be a name or other proper noun.
+propernouns is a single-artifact Maven project that provides a library to check whether a string is likely to be a name or other proper noun.
 
 ## Prerequisites
 

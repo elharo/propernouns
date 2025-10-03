@@ -12,7 +12,7 @@
   
   <name>propernouns</name>
   <description>Library to check whether a string is likely to be a name</description>
-  <url>https://github.com/elharo/propernames</url>
+  <url>https://github.com/elharo/propernouns</url>
 
   <licenses>
     <license>
@@ -32,13 +32,13 @@
 
   <issueManagement>
     <system>GitHub</system>
-    <url>https://github.com/elharo/propernames/issues</url>
+    <url>https://github.com/elharo/propernouns/issues</url>
   </issueManagement>
 
   <scm>
-    <connection>scm:git:git://github.com/elharo/propernames.git</connection>
-    <developerConnection>scm:git:ssh://github.com:elharo/propernames.git</developerConnection>
-    <url>https://github.com/elharo/propernames/tree/main</url>
+    <connection>scm:git:git://github.com/elharo/propernouns.git</connection>
+    <developerConnection>scm:git:ssh://github.com:elharo/propernouns.git</developerConnection>
+    <url>https://github.com/elharo/propernouns/tree/main</url>
   </scm>
 
   <distributionManagement>
