@@ -84,7 +84,7 @@ Deploy the artifacts to Maven Central from the tagged release:
 
 ```bash
 # Deploy to Maven Central
-mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernames-deploy -Dmaven.install.skip
+mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
 ### 6. Monitor and Publish Deployment
@@ -130,11 +130,11 @@ After release, verify the artifacts are available for download:
 1. **Direct repository check** (available immediately):
    ```bash
    # Test downloading the library
-   mvn dependency:get -Dartifact=com.elharo.propernouns:propernames:<VERSION>
+   mvn dependency:get -Dartifact=com.elharo.propernouns:propernouns:<VERSION>
    ```
 
 2. **Direct URL check** (available immediately):
-   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/propernames/<VERSION>/`
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/propernouns/<VERSION>/`
 
 3. **Maven Central Search** (may take several hours to update):
    - [Search results](https://search.maven.org/search?q=g:com.elharo.propernouns)
@@ -149,7 +149,7 @@ Once released, users can use the library:
 ```xml
 <dependency>
   <groupId>com.elharo.propernouns</groupId>
-  <artifactId>propernames</artifactId>
+  <artifactId>propernouns</artifactId>
   <version>VERSION</version>
 </dependency>
 ```
