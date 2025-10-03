@@ -61,7 +61,6 @@ git push origin release/<VERSION>
 Then create a pull request from `release/<VERSION>` to `main` with:
 - Title: "Release version <VERSION>"
 - Description: Include changelog and release notes
-- Request review from project maintainers
 
 Once the pull request is approved and merged, the release tag will be on main.
 
@@ -121,7 +120,6 @@ git push origin prepare-next-development-<NEXT-VERSION>
 Then create a pull request from `prepare-next-development-<NEXT-VERSION>` to `main` with:
 - Title: "Prepare for next development iteration: <NEXT-VERSION>-SNAPSHOT"
 - Description: Updates version numbers for continued development
-- Request review from project maintainers
 
 ## Verification
 
