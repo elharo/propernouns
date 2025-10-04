@@ -1,6 +1,6 @@
-# propernames
+# propernouns
 
-[![CI](https://github.com/elharo/propernames/actions/workflows/ci.yml/badge.svg)](https://github.com/elharo/propernames/actions/workflows/ci.yml)
+[![CI](https://github.com/elharo/propernouns/actions/workflows/ci.yml/badge.svg)](https://github.com/elharo/propernouns/actions/workflows/ci.yml)
 
 Library to check whether a string is likely to be a name or other proper noun.
 The methods are deliberately case insensitive since the motivating purpose is to
