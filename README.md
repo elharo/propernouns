@@ -61,7 +61,6 @@ public class Example {
         isName = Names.isName("hello world");
         System.out.println("hello world: " + isName); // false
         
-        // Irish and Scottish surnames
         isName = Names.isName("O'Brien");
         System.out.println("O'Brien: " + isName); // true
         
@@ -70,6 +69,8 @@ public class Example {
     }
 }
 ```
+
+## Reporting Bugs
 
 If you know a heuristic for identifying certain groups of names, please file an issue.
 There are already heuristics that identify many Irish, Scottish, and Icelandic surnames.
