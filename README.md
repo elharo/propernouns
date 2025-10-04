@@ -60,12 +60,6 @@ public class Example {
         // Non-names return false
         isName = Names.isName("hello world");
         System.out.println("hello world: " + isName); // false
-        
-        isName = Names.isName("O'Brien");
-        System.out.println("O'Brien: " + isName); // true
-        
-        isName = Names.isName("McDonald");
-        System.out.println("McDonald: " + isName); // true
     }
 }
 ```
