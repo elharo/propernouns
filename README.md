@@ -10,6 +10,67 @@ This library was needed to fix a particular problem, and is the simplest thing
 that could possibly work. It is not and cannot be exhaustive.
 It identifies some names, not all of them.
 
+## Installation
+
+Add the library to your project using one of these dependency management tools:
+
+### Maven
+
+```xml
+<dependency>
+  <groupId>com.elharo</groupId>
+  <artifactId>propernouns</artifactId>
+  <version>1.0</version>
+</dependency>
+```
+
+### Gradle
+
+```gradle
+implementation 'com.elharo:propernouns:1.0'
+```
+
+### Ivy
+
+```xml
+<dependency org="com.elharo" name="propernouns" rev="1.0"/>
+```
+
+## Usage
+
+The library provides a simple static method to check if a string is likely to be a proper name:
+
+```java
+import com.elharo.propernouns.Names;
+
+public class Example {
+    public static void main(String[] args) {
+        // Check single names
+        boolean isName = Names.isName("John");
+        System.out.println("John: " + isName); // true
+        
+        // Check full names
+        isName = Names.isName("John Smith");
+        System.out.println("John Smith: " + isName); // true
+        
+        // Case insensitive
+        isName = Names.isName("john smith");
+        System.out.println("john smith: " + isName); // true
+        
+        // Non-names return false
+        isName = Names.isName("hello world");
+        System.out.println("hello world: " + isName); // false
+        
+        // Irish and Scottish surnames
+        isName = Names.isName("O'Brien");
+        System.out.println("O'Brien: " + isName); // true
+        
+        isName = Names.isName("McDonald");
+        System.out.println("McDonald: " + isName); // true
+    }
+}
+```
+
 If you know a heuristic for identifying certain groups of names, please file an issue.
 There are already heuristics that identify many Irish, Scottish, and Icelandic surnames.
 If you need one or more names added to the checks, send a PR that adds them to
