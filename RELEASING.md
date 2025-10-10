@@ -8,6 +8,22 @@ propernouns is a single-artifact Maven project that provides a library to check 
 
 This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. This is achieved through the `project.build.outputTimestamp` property in pom.xml, which sets a fixed timestamp for all artifacts.
 
+### Updating the Timestamp Before Release
+
+Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
+
+```bash
+# Option 1: Use current date
+echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
+
+# Option 2: Use the timestamp of the last commit
+echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
+```
+
+Update the property manually in pom.xml with the generated timestamp.
+
+### Verifying Reproducibility
+
 To verify reproducibility:
 
 ```bash
