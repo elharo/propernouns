@@ -4,6 +4,25 @@ This document explains how to upload the propernouns library to Maven Central.
 
 propernouns is a single-artifact Maven project that provides a library to check whether a string is likely to be a name or other proper noun.
 
+## Reproducible Builds
+
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. This is achieved through the `project.build.outputTimestamp` property in pom.xml, which sets a fixed timestamp for all artifacts.
+
+To verify reproducibility:
+
+```bash
+# Build twice and compare checksums
+mvn clean package
+sha256sum target/*.jar > checksums1.txt
+
+mvn clean package
+sha256sum target/*.jar > checksums2.txt
+
+diff checksums1.txt checksums2.txt
+```
+
+If the builds are reproducible, the checksums will be identical.
+
 ## Prerequisites
 
 Before releasing, ensure you have completed the one-time setup requirements:
