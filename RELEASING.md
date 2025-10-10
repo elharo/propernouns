@@ -27,6 +27,35 @@ git pull origin main
 git checkout -b release/<VERSION>
 ```
 
+### 0.5. Update Reproducible Build Timestamp
+
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
+
+```bash
+# Option 1: Use current date
+echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
+
+# Option 2: Use the timestamp of the last commit
+echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
+```
+
+Update the property manually in pom.xml with the generated timestamp.
+
+To verify reproducibility:
+
+```bash
+# Build twice and compare checksums
+mvn clean package
+sha256sum target/*.jar > checksums1.txt
+
+mvn clean package
+sha256sum target/*.jar > checksums2.txt
+
+diff checksums1.txt checksums2.txt
+```
+
+If the builds are reproducible, the checksums will be identical.
+
 ### 1. Prepare the Release
 
 Before releasing, ensure the project is ready:
