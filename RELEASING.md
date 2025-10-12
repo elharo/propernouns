@@ -16,7 +16,7 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-### 0. Create a release branch
+### 1. Create a release branch
 
 ```bash
 # Ensure you're on main and have the latest changes
@@ -27,7 +27,36 @@ git pull origin main
 git checkout -b release/<VERSION>
 ```
 
-### 1. Prepare the Release
+### 2. Update Reproducible Build Timestamp
+
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
+
+```bash
+# Option 1: Use current date
+echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
+
+# Option 2: Use the timestamp of the last commit
+echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
+```
+
+Update the property manually in pom.xml with the generated timestamp.
+
+To verify reproducibility:
+
+```bash
+# Build twice and compare checksums
+mvn clean package
+sha256sum target/*.jar > checksums1.txt
+
+mvn clean package
+sha256sum target/*.jar > checksums2.txt
+
+diff checksums1.txt checksums2.txt
+```
+
+If the builds are reproducible, the checksums will be identical.
+
+### 3. Prepare the Release
 
 Before releasing, ensure the project is ready:
 
@@ -36,7 +65,7 @@ Before releasing, ensure the project is ready:
 mvn clean package
 ```
 
-### 2. Update Version Numbers
+### 4. Update Version Numbers
 
 Update the version in the POM from SNAPSHOT to the release version:
 
@@ -49,7 +78,7 @@ git add .
 git commit -m "Release version <VERSION>"
 ```
 
-### 3. Create Pull Request for Release
+### 5. Create Pull Request for Release
 
 Create a pull request for the release version changes:
 
@@ -64,7 +93,7 @@ Then create a pull request from `release/<VERSION>` to `main` with:
 
 After creating the pull request, merge it to main.
 
-### 4. Tag the Release
+### 6. Tag the Release
 
 After the release PR is merged to main, create the release tag:
 
@@ -78,7 +107,7 @@ git tag v<VERSION>
 git push origin v<VERSION>
 ```
 
-### 5. Deploy to Maven Central
+### 7. Deploy to Maven Central
 
 Deploy the artifacts to Maven Central from the tagged release:
 
@@ -87,7 +116,7 @@ Deploy the artifacts to Maven Central from the tagged release:
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 6. Monitor and Publish Deployment
+### 8. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -98,7 +127,7 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 7. Prepare for Next Development Iteration
+### 9. Prepare for Next Development Iteration
 
 Create another pull request for the next development version:
 
