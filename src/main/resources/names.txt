@@ -75,6 +75,7 @@ alvarez
 alvin
 alyson
 alžbeta
+amado
 amari
 amato
 amaya
@@ -85,6 +86,7 @@ amélie
 amir
 amira
 amodei
+amy
 anastasia
 anaya
 ander
@@ -328,6 +330,7 @@ chmielewski
 christensen
 christine
 christopher
+chuck
 ciprián
 cisneros
 clara
@@ -598,6 +601,7 @@ gavin
 geertsema
 geir
 gemma
+geoffrey
 george
 georgia
 gianna
@@ -801,6 +805,9 @@ jaya
 jean-pierre
 jeanne
 jędrzejczyk
+jef
+jefferson
+jeffrey
 jelínek
 jelliffe
 jen
@@ -1305,6 +1312,7 @@ pedro
 pellegrini
 pena
 penelope
+penn
 per
 perales
 perez
@@ -1393,6 +1401,7 @@ rizzo
 robert
 roberta
 roberts
+robertson
 robinson
 rocha
 rocío
@@ -1475,6 +1484,7 @@ schouten
 schreurs
 schröder
 schulz
+schumer
 schwartz
 schwarz
 scott
@@ -1582,6 +1592,7 @@ tarver
 tatum
 taylor
 teagan
+ted
 teodora
 teresa
 tereza
