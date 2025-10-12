@@ -33,6 +33,7 @@ ainhoa
 aisha
 aitana
 aksel
+al
 alain
 alan
 alana
@@ -236,6 +237,7 @@ boyce
 boyer
 božidar
 brabec
+brad
 bradley
 brady
 brands
@@ -773,6 +775,7 @@ jalen
 james
 jamie
 jan
+janet
 jānis
 jankowski
 jános
@@ -1144,6 +1147,7 @@ michel
 mickiewicz
 miguel
 mihăilă
+mike
 mikkelsen
 mila
 milan
@@ -1540,6 +1544,7 @@ sullivan
 sunde
 susan
 sutton
+suze
 suzuki
 svatoš
 švehla
@@ -1581,6 +1586,7 @@ théo
 theodore
 thiago
 thierry
+thom
 thomas
 thompson
 thorbjørn
@@ -1594,6 +1600,7 @@ timmers
 timothy
 tiril
 tobias
+tom
 tomáš
 tomasz
 tommaso
@@ -1670,7 +1677,6 @@ verónica
 veronika
 veselý
 vicente
-victor
 víctor
 victoria
 vidal
@@ -1735,13 +1741,14 @@ wright
 wróbel
 wróblewski
 wyatt
+xander
+xandra
 xavier
 yael
 yang
 yara
 yaretzi
 yates
-young
 yusra
 žáček
 zachary
