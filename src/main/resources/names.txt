@@ -175,6 +175,7 @@ bartlett
 barton
 basile
 bassett
+baudean
 bauer
 bautista
 bazan
@@ -428,6 +429,7 @@ doležal
 dominguez
 dominic
 dominik
+dominiquette
 donnelly
 donovan
 đorđević
@@ -631,6 +633,7 @@ greco
 greta
 gréta
 greyson
+griffith
 gro
 groth
 grzegorz
@@ -1539,8 +1542,10 @@ stefano
 stefánsson
 stein
 stella
+stephan
 stéphane
 stępień
+setve
 steven
 stewart
 stokke
