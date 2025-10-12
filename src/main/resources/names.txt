@@ -55,11 +55,13 @@ alexander
 alexandria
 alfaro
 alfonso
+alfred
 alfréd
 ali
 alice
 alicea
 alina
+alison
 alma
 almanza
 alondra
@@ -71,6 +73,7 @@ alvarez
 álvarez
 álvaro
 alvin
+alyson
 alžbeta
 amari
 amato
@@ -652,6 +655,7 @@ hamilton
 hana
 hána
 hannah
+hannigan
 hansen
 harald
 hardin
@@ -1019,6 +1023,7 @@ lloyd
 lóa
 lofton
 logan
+loki
 løken
 lombardi
 longo
@@ -1591,6 +1596,7 @@ thierry
 thom
 thomas
 thompson
+thor
 thorbjørn
 tiana
 tichý
