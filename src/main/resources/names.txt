@@ -621,6 +621,7 @@ gould
 grabowski
 grace
 graham
+granger
 grasso
 grayson
 greco
@@ -776,6 +777,7 @@ james
 jamie
 jan
 janet
+janice
 jānis
 jankowski
 jános
@@ -897,6 +899,7 @@ kiana
 kiara
 kieślowski
 kim
+kimmy
 kincaid
 kingston
 kinsley
@@ -1353,7 +1356,6 @@ ramon
 ramos
 raul
 raúl
-ray
 raymond
 reagan
 reese
