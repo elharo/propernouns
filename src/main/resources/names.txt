@@ -16,6 +16,7 @@ adams
 ādams
 adéla
 adeline
+adelson
 adrian
 adrián
 adriana
@@ -28,6 +29,7 @@ agnė
 agnieszka
 aguilar
 aguirre
+aho
 aiden
 ainhoa
 aisha
@@ -230,6 +232,7 @@ blok
 bø
 bobby
 böhm
+bohr
 bolanos
 bonilla
 bonnet
@@ -365,6 +368,7 @@ cortez
 cosgrove
 costa
 cotto
+courant
 cox
 crawford
 cristóbal
@@ -389,6 +393,7 @@ dani
 daniel
 dániel
 daniella
+danny
 darian
 darius
 david
@@ -424,6 +429,7 @@ diego
 dieter
 dijkstra
 dillon
+dina
 dior
 dirk
 dixon
@@ -433,7 +439,9 @@ dominguez
 dominic
 dominik
 dominiquette
+don
 donnelly
+donny
 donovan
 đorđević
 doyle
@@ -463,6 +471,7 @@ ehrlich
 eide
 einar
 einarsson
+einstein
 eirik
 eleanor
 elena
@@ -541,6 +550,7 @@ ferrari
 ferraro
 ferrer
 ferri
+feshbach
 fidel
 figueroa
 filip
@@ -617,6 +627,7 @@ gjertsen
 glenn
 głowacki
 goldie
+goldstein
 gomez
 gonzales
 gonzalez
@@ -658,6 +669,7 @@ hagen
 hájek
 håkon
 hale
+halliday
 hamilton
 hana
 hána
@@ -688,6 +700,7 @@ hector
 héctor
 hedda
 heidi
+heisenberg
 hekla
 hélène
 helga
@@ -1027,14 +1040,15 @@ lim
 lin
 lina
 lincoln
+linus
 lis
 lisa
 lloyd
 lóa
 lofton
 logan
-loki
 løken
+loki
 lombardi
 longo
 lopez
@@ -1381,6 +1395,7 @@ remy
 rémy
 rene
 renee
+resnick
 reuter
 reyes
 reynolds
@@ -1389,6 +1404,7 @@ rhodes
 ricardo
 riccardo
 ricci
+richard
 richter
 říha
 riley
@@ -1396,6 +1412,7 @@ rinaldi
 rios
 risto
 rivera
+rivest
 rivière
 rizzo
 robert
@@ -1497,8 +1514,11 @@ sem
 sergio
 serra
 seth
+sethi
+setve
 ševčík
 sewell
+shamir
 shane
 shannon
 shaw
@@ -1544,6 +1564,7 @@ sosa
 soto
 soukup
 spencer
+stallman
 staněk
 šťastný
 stefán
@@ -1555,11 +1576,11 @@ stella
 stephan
 stéphane
 stępień
-setve
 steven
 stewart
 stokke
 strand
+strang
 stříbrný
 strøm
 sullivan
@@ -1633,6 +1654,7 @@ tõnu
 tony
 torgersen
 torres
+torvalds
 tóth
 tove
 travis
@@ -1650,6 +1672,7 @@ tuwim
 ty
 tymon
 uldis
+ullman
 ulrich
 unai
 unnur
