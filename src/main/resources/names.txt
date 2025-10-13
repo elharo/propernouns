@@ -16,6 +16,10 @@ adams
 ādams
 adéla
 adeline
+adelson
+stallman
+torvalds
+linus
 adrian
 adrián
 adriana
@@ -28,6 +32,11 @@ agnė
 agnieszka
 aguilar
 aguirre
+aho
+sethi
+ullman
+rivest
+shamir
 aiden
 ainhoa
 aisha
@@ -389,6 +398,7 @@ dani
 daniel
 dániel
 daniella
+danny
 darian
 darius
 david
@@ -424,6 +434,7 @@ diego
 dieter
 dijkstra
 dillon
+dina
 dior
 dirk
 dixon
@@ -433,8 +444,10 @@ dominguez
 dominic
 dominik
 dominiquette
+don
 donnelly
 donovan
+donny
 đorđević
 doyle
 dragoș
@@ -1389,6 +1402,7 @@ rhodes
 ricardo
 riccardo
 ricci
+richard
 richter
 říha
 riley
