@@ -16,14 +16,27 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-### 1. Create a release branch
+**Note**: Main always stays at a SNAPSHOT version. Releases are cut from tagged branches, not from main.
+
+### 1. Create a release branch from the latest tag
 
 ```bash
-# Ensure you're on main and have the latest changes
+# Ensure you have the latest tags
+git fetch --tags
+
+# Get the last release tag (e.g., v1.0.1)
+LAST_TAG=$(git describe --tags --abbrev=0)
+
+# Create the release branch from the last tag
+git checkout -b release/<VERSION> ${LAST_TAG}
+```
+
+If this is the very first release and no tags exist yet:
+
+```bash
+# For the first release, branch from main
 git checkout main
 git pull origin main
-
-# Create the release branch
 git checkout -b release/<VERSION>
 ```
 
@@ -78,29 +91,24 @@ Before releasing, ensure the project is ready:
 mvn clean package
 ```
 
-### 5. Create Pull Request for Release
+### 5. Push the Release Branch
 
-Create a pull request for the release version changes:
+Push the release branch to GitHub:
 
 ```bash
 # Push the release branch
 git push origin release/<VERSION>
 ```
 
-Then create a pull request from `release/<VERSION>` to `main` with:
-- Title: "Release version <VERSION>"
-- Description: Include changelog and release notes
-
-After creating the pull request, merge it to main.
+**Important**: Do not create a pull request to merge the release branch to main. Release branches are independent and are not merged back to main.
 
 ### 6. Tag the Release
 
-After the release PR is merged to main, create the release tag:
+Create the release tag on the release branch:
 
 ```bash
-# Switch to main and pull the merged changes
-git checkout main
-git pull origin main
+# Ensure you're on the release branch
+git checkout release/<VERSION>
 
 # Create and push the release tag
 git tag v<VERSION>
@@ -112,6 +120,9 @@ git push origin v<VERSION>
 Deploy the artifacts to Maven Central from the tagged release:
 
 ```bash
+# Check out the release tag
+git checkout v<VERSION>
+
 # Deploy to Maven Central
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
@@ -127,12 +138,16 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 9. Prepare for Next Development Iteration
+### 9. Update Main to Next Development Version (if needed)
 
-Create another pull request for the next development version:
+If the SNAPSHOT version on main needs to be updated to the next development iteration:
 
 ```bash
-# Create a new branch for the next development iteration
+# Switch to main
+git checkout main
+git pull origin main
+
+# Create a new branch for the version update
 git checkout -b prepare-next-development-<NEXT-VERSION>
 
 # Update to next development version
@@ -151,6 +166,8 @@ Then create a pull request from `prepare-next-development-<NEXT-VERSION>` to `ma
 - Description: Updates version numbers for continued development
 
 After creating the pull request, merge it to main.
+
+**Note**: Main should always have a SNAPSHOT version. If main already has the correct SNAPSHOT version for the next development iteration, this step can be skipped.
 
 ## Verification
 
