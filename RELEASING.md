@@ -16,8 +16,6 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-**Note**: Main always stays at a SNAPSHOT version. Releases are cut from tagged branches, not from main.
-
 ### 1. Create a release branch for the new version
 
 Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
@@ -106,19 +104,25 @@ git tag v<VERSION>
 git push origin v<VERSION>
 ```
 
-### 7. Deploy to Maven Central
+### 7. Check Out the Release Tag
 
-Deploy the artifacts to Maven Central from the tagged release:
+Before deploying, check out the release tag:
 
 ```bash
 # Check out the release tag
 git checkout v<VERSION>
+```
 
+### 8. Deploy to Maven Central
+
+Deploy the artifacts to Maven Central:
+
+```bash
 # Deploy to Maven Central
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 8. Monitor and Publish Deployment
+### 9. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -129,9 +133,9 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 9. Update Main to Next Development Version
+### 10. Update Main to Next Development Version
 
-If the SNAPSHOT version on main needs to be updated to the next development iteration:
+Update the SNAPSHOT version on main to the next development version:
 
 ```bash
 # Switch to main
@@ -157,8 +161,6 @@ Then create a pull request from `prepare-next-development-<NEXT-VERSION>` to `ma
 - Description: Updates version numbers for continued development
 
 After creating the pull request, merge it to main.
-
-**Note**: Main should always have a SNAPSHOT version. If main already has the correct SNAPSHOT version for the next development iteration, this step can be skipped.
 
 ## Verification
 
