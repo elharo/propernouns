@@ -134,6 +134,26 @@ public class Names {
       return true;
     }
     
+    // Heuristic: German nouns ending in "keit"
+    // (like Möglichkeit, Geschwindigkeit)
+    // Must have a prefix before the suffix
+    if (word.endsWith("keit") && word.length() > 4) {
+      return true;
+    }
+    
+    // Heuristic: German nouns ending in "heit" (like Schönheit, Wahrheit)
+    // Must have a prefix before the suffix
+    if (word.endsWith("heit") && word.length() > 4) {
+      return true;
+    }
+    
+    // Heuristic: German nouns ending in "schaft"
+    // (like Freundschaft, Gesellschaft)
+    // Must have a prefix before the suffix
+    if (word.endsWith("schaft") && word.length() > 6) {
+      return true;
+    }
+    
     // Default to false - not a name unless proven otherwise
     return false;
   }

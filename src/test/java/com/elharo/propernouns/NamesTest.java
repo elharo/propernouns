@@ -145,4 +145,64 @@ public class NamesTest {
     assertTrue("Name with straight apostrophe should be valid", Names.isName("O'Test"));
     assertTrue("Name with curly apostrophe should be valid", Names.isName("O\u2019Test")); 
   }
+  
+  @Test
+  public void testGermanNounsEndingInKeit() {
+    // Test German nouns ending in keit
+    assertTrue("Freiheit should be recognized as a proper noun", Names.isName("Freiheit"));
+    assertTrue("Geschwindigkeit should be recognized as a proper noun", Names.isName("Geschwindigkeit"));
+    assertTrue("Möglichkeit should be recognized as a proper noun", Names.isName("Möglichkeit"));
+    assertTrue("Einsamkeit should be recognized as a proper noun", Names.isName("Einsamkeit"));
+    
+    // Test case insensitivity
+    assertTrue("freiheit should be recognized as a proper noun (lowercase)", Names.isName("freiheit"));
+    assertTrue("GESCHWINDIGKEIT should be recognized as a proper noun (uppercase)", Names.isName("GESCHWINDIGKEIT"));
+    
+    // Edge cases - standalone suffix should not be a noun
+    assertFalse("keit alone should not be a noun", Names.isName("keit"));
+    assertFalse("KEIT alone should not be a noun", Names.isName("KEIT"));
+    
+    // Short prefixes should still work
+    assertTrue("Akeit should be recognized as a proper noun", Names.isName("Akeit"));
+  }
+  
+  @Test
+  public void testGermanNounsEndingInHeit() {
+    // Test German nouns ending in heit
+    assertTrue("Schönheit should be recognized as a proper noun", Names.isName("Schönheit"));
+    assertTrue("Wahrheit should be recognized as a proper noun", Names.isName("Wahrheit"));
+    assertTrue("Weisheit should be recognized as a proper noun", Names.isName("Weisheit"));
+    assertTrue("Krankheit should be recognized as a proper noun", Names.isName("Krankheit"));
+    
+    // Test case insensitivity
+    assertTrue("schönheit should be recognized as a proper noun (lowercase)", Names.isName("schönheit"));
+    assertTrue("WAHRHEIT should be recognized as a proper noun (uppercase)", Names.isName("WAHRHEIT"));
+    
+    // Edge cases - standalone suffix should not be a noun
+    assertFalse("heit alone should not be a noun", Names.isName("heit"));
+    assertFalse("HEIT alone should not be a noun", Names.isName("HEIT"));
+    
+    // Short prefixes should still work
+    assertTrue("Aheit should be recognized as a proper noun", Names.isName("Aheit"));
+  }
+  
+  @Test
+  public void testGermanNounsEndingInSchaft() {
+    // Test German nouns ending in schaft
+    assertTrue("Freundschaft should be recognized as a proper noun", Names.isName("Freundschaft"));
+    assertTrue("Gesellschaft should be recognized as a proper noun", Names.isName("Gesellschaft"));
+    assertTrue("Wissenschaft should be recognized as a proper noun", Names.isName("Wissenschaft"));
+    assertTrue("Mannschaft should be recognized as a proper noun", Names.isName("Mannschaft"));
+    
+    // Test case insensitivity
+    assertTrue("freundschaft should be recognized as a proper noun (lowercase)", Names.isName("freundschaft"));
+    assertTrue("GESELLSCHAFT should be recognized as a proper noun (uppercase)", Names.isName("GESELLSCHAFT"));
+    
+    // Edge cases - standalone suffix should not be a noun
+    assertFalse("schaft alone should not be a noun", Names.isName("schaft"));
+    assertFalse("SCHAFT alone should not be a noun", Names.isName("SCHAFT"));
+    
+    // Short prefixes should still work
+    assertTrue("Aschaft should be recognized as a proper noun", Names.isName("Aschaft"));
+  }
 }
