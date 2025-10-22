@@ -135,7 +135,7 @@ public class Names {
     }
     
     // Heuristic: German nouns ending in "keit"
-    // (like Freiheit, Geschwindigkeit)
+    // (like Möglichkeit, Geschwindigkeit)
     // Must have a prefix before the suffix
     if (word.endsWith("keit") && word.length() > 4) {
       return true;
