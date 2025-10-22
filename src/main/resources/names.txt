@@ -413,6 +413,7 @@ de vries
 de waal
 de wit
 decker
+december
 declan
 dekker
 delgado
@@ -540,6 +541,7 @@ farrow
 fátima
 fauske
 federica
+february
 felipe
 félix
 ferenc
@@ -588,6 +590,7 @@ freddie
 frederick
 freya
 freyja
+friday
 friðrik
 fuentes
 fuller
@@ -801,6 +804,7 @@ james
 jamie
 jan
 janet
+january
 janice
 jānis
 jankowski
@@ -877,6 +881,8 @@ juha
 jules
 julia
 julian
+june
+july
 juliana
 julie
 jürgen
@@ -1112,6 +1118,7 @@ manning
 manon
 manuel
 marcellus
+march
 marchetti
 marcin
 marco
@@ -1148,6 +1155,7 @@ matteo
 matthew
 max
 maxwell
+may
 maya
 mayer
 mazur
@@ -1200,6 +1208,7 @@ molina
 möller
 molly
 mónica
+monday
 montanez
 montez
 monti
@@ -1261,6 +1270,7 @@ noah
 noelle
 noemi
 noémie
+november
 nolan
 nora
 norah
@@ -1273,6 +1283,7 @@ nyla
 öberg
 obrien
 ocasio
+october
 octavia
 ødegaard
 ohara
@@ -1484,6 +1495,7 @@ santana
 santiago
 santoro
 santos
+saturday
 sara
 sarah
 sarapuu
@@ -1512,6 +1524,7 @@ selah
 selene
 sem
 sergio
+september
 serra
 seth
 sethi
@@ -1585,6 +1598,7 @@ stříbrný
 strøm
 sullivan
 sunde
+sunday
 susan
 sutton
 suze
@@ -1630,6 +1644,7 @@ théo
 theodore
 thiago
 thierry
+thursday
 thom
 thomas
 thompson
@@ -1669,6 +1684,7 @@ tufte
 turid
 turner
 tuwim
+tuesday
 ty
 tymon
 uldis
@@ -1760,6 +1776,7 @@ wells
 wenche
 werner
 wesley
+wednesday
 wesołowski
 weston
 wheeler
