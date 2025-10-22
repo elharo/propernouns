@@ -138,7 +138,7 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 9. Update Main to Next Development Version (if needed)
+### 9. Update Main to Next Development Version
 
 If the SNAPSHOT version on main needs to be updated to the next development iteration:
 
