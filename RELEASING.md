@@ -18,17 +18,19 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 **Note**: Main always stays at a SNAPSHOT version. Releases are cut from tagged branches, not from main.
 
-### 1. Create a release branch from the latest tag
+### 1. Create a release branch for the new version
+
+Create a release branch from the previous release tag. This will be used to create a new version and tag.
 
 ```bash
 # Ensure you have the latest tags
 git fetch --tags
 
-# Get the last release tag (e.g., v1.0.1)
+# Get the previous release tag (e.g., v1.0.1)
 LAST_TAG=$(git describe --tags --abbrev=0)
 
-# Create the release branch from the last tag
-git checkout -b release/<VERSION> ${LAST_TAG}
+# Create the release branch for the new version from the previous tag
+git checkout -b release/<NEW_VERSION> ${LAST_TAG}
 ```
 
 If this is the very first release and no tags exist yet:
@@ -37,7 +39,7 @@ If this is the very first release and no tags exist yet:
 # For the first release, branch from main
 git checkout main
 git pull origin main
-git checkout -b release/<VERSION>
+git checkout -b release/<NEW_VERSION>
 ```
 
 ### 2. Update Version Numbers
