@@ -139,7 +139,6 @@ git checkout -b prepare-next-development-<NEXT-VERSION>
 mvn versions:set -DnewVersion=<NEXT-VERSION>-SNAPSHOT
 
 # Commit the version change
-git add .
 git commit -m "Prepare for next development iteration: <NEXT-VERSION>-SNAPSHOT"
 
 # Push the branch and create a pull request
