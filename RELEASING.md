@@ -20,25 +20,14 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ### 1. Create a release branch for the new version
 
-Create a release branch from the previous release tag. This will be used to create a new version and tag.
+Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
 
 ```bash
-# Ensure you have the latest tags
-git fetch --tags
-
-# Get the previous release tag (e.g., v1.0.1)
-LAST_TAG=$(git describe --tags --abbrev=0)
-
-# Create the release branch for the new version from the previous tag
-git checkout -b release/<NEW_VERSION> ${LAST_TAG}
-```
-
-If this is the very first release and no tags exist yet:
-
-```bash
-# For the first release, branch from main
+# Ensure you're on main and have the latest changes
 git checkout main
 git pull origin main
+
+# Create the release branch for the new version
 git checkout -b release/<NEW_VERSION>
 ```
 
