@@ -127,7 +127,8 @@ mvn clean package  # Creates target/propernames-*.jar
 Library to check whether a string is likely to be a proper name (e.g., "John Smith" vs "hello world").
 
 ## Project Standards
-- Use Java 8+ language features
+- Use Java 8+ API.
+- Do not use lambdas.
 - Follow Google Java code style
 - Include a linefeed as the final character of each source code file
 - Package structure: com.elharo.propernames
@@ -136,4 +137,5 @@ Library to check whether a string is likely to be a proper name (e.g., "John Smi
 - Handle edge cases in Javadoc parsing gracefully
 - Do not use reflection to test. Unit test through public and package private APIs.
 - Do not catch raw java.lang.Exception or java.lang.RuntimeException unless absolutely required by a third party method that throws an undifferentiated exception. Catch only more specific subclasses. Assume most runtime exceptions indicate bugs that should be fixed by preventing the exception from being thrown rather than catching it.
-- When writing a PR description include a link to the issue that is being fixed such as "fixes #146" assuming the PR completely resolves the issue.
+- When writing a PR description, include a link to the issue that is being fixed such as "fixes #146" assuming the PR completely resolves the issue.
+- Keep PRs small and focused. Do not change code unrelated to the issue being fixed. In particular, do not change the maven wrapper unless the explicit purpose of the PR is to chaneg the build system.
