@@ -27,7 +27,20 @@ git pull origin main
 git checkout -b release/<VERSION>
 ```
 
-### 2. Update Reproducible Build Timestamp
+### 2. Update Version Numbers
+
+Update the version in the POM from SNAPSHOT to the release version:
+
+```bash
+# Use Maven versions plugin to update the version
+mvn versions:set -DnewVersion=<VERSION>
+
+# Commit the version change
+git add .
+git commit -m "Release version <VERSION>"
+```
+
+### 3. Update Reproducible Build Timestamp
 
 This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
 
@@ -56,26 +69,13 @@ diff checksums1.txt checksums2.txt
 
 If the builds are reproducible, the checksums will be identical.
 
-### 3. Prepare the Release
+### 4. Prepare the Release
 
 Before releasing, ensure the project is ready:
 
 ```bash
 # Verify everything compiles and tests pass
 mvn clean package
-```
-
-### 4. Update Version Numbers
-
-Update the version in the POM from SNAPSHOT to the release version:
-
-```bash
-# Use Maven versions plugin to update the version
-mvn versions:set -DnewVersion=<VERSION>
-
-# Commit the version change
-git add .
-git commit -m "Release version <VERSION>"
 ```
 
 ### 5. Create Pull Request for Release
