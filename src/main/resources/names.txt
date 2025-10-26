@@ -706,6 +706,9 @@ hedda
 heidi
 heisenberg
 hekla
+helen
+helena
+helene
 hélène
 helga
 helle
@@ -1608,6 +1611,7 @@ sunday
 susan
 sutton
 suze
+suzie
 suzuki
 svatoš
 švehla
