@@ -486,6 +486,7 @@ elísabet
 elisabeth
 eliška
 eliza
+elizier
 ella
 ellie
 elliot
@@ -1151,11 +1152,10 @@ massey
 mateo
 mateusz
 mathieu
+matt
 matteo
 matthew
-max
 maxwell
-may
 maya
 mayer
 mazur
@@ -1813,6 +1813,7 @@ yang
 yara
 yaretzi
 yates
+yudkowsky
 yusra
 žáček
 zachary
