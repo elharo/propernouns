@@ -814,6 +814,7 @@ jansen
 janssen
 jaquez
 jardine
+jared
 jasmine
 jason
 javier
@@ -1224,6 +1225,8 @@ morin
 morris
 morten
 mosley
+moshowitz
+moskovitz
 mrázek
 muhammed
 mujo
@@ -1854,6 +1857,7 @@ zoran
 zsuzsanna
 zuri
 zuzanna
+zvi
 þóra
 þórðarson
 þórir
