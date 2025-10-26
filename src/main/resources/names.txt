@@ -486,6 +486,7 @@ elísabet
 elisabeth
 eliška
 eliza
+eliezer
 ella
 ellie
 elliot
@@ -705,10 +706,14 @@ hedda
 heidi
 heisenberg
 hekla
+helen
+helena
+helene
 hélène
 helga
 helle
 helmut
+hemingway
 henderson
 hendrik
 hendriks
@@ -813,6 +818,7 @@ jansen
 janssen
 jaquez
 jardine
+jared
 jasmine
 jason
 javier
@@ -1004,6 +1010,7 @@ larson
 lászló
 laura
 laurent
+laurie
 layla
 léa
 leah
@@ -1151,11 +1158,10 @@ massey
 mateo
 mateusz
 mathieu
+matt
 matteo
 matthew
-max
 maxwell
-may
 maya
 mayer
 mazur
@@ -1224,6 +1230,8 @@ morin
 morris
 morten
 mosley
+moshowitz
+moskovitz
 mrázek
 muhammed
 mujo
@@ -1577,6 +1585,7 @@ sosa
 soto
 soukup
 spencer
+spiegel
 stallman
 staněk
 šťastný
@@ -1602,6 +1611,7 @@ sunday
 susan
 sutton
 suze
+suzie
 suzuki
 svatoš
 švehla
@@ -1813,6 +1823,7 @@ yang
 yara
 yaretzi
 yates
+yudkowsky
 yusra
 žáček
 zachary
@@ -1853,6 +1864,7 @@ zoran
 zsuzsanna
 zuri
 zuzanna
+zvi
 þóra
 þórðarson
 þórir
