@@ -16,7 +16,22 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-### 1. Create a release branch for the new version
+### 1. Set Release Version Environment Variable
+
+Before starting the release process, set the release version as an environment variable. This allows you to copy and paste the commands below without editing version numbers.
+
+```bash
+# Set the release version (e.g., 1.0.3)
+export RELEASE_VERSION=1.0.3
+```
+
+You can verify it's set correctly:
+
+```bash
+echo $RELEASE_VERSION
+```
+
+### 2. Create a release branch for the new version
 
 Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
 
@@ -26,23 +41,23 @@ git checkout main
 git pull origin main
 
 # Create the release branch for the new version
-git checkout -b release/<NEW_VERSION>
+git checkout -b release/$RELEASE_VERSION
 ```
 
-### 2. Update Version Numbers
+### 3. Update Version Numbers
 
 Update the version in the POM from SNAPSHOT to the release version:
 
 ```bash
 # Use Maven versions plugin to update the version
-mvn versions:set -DnewVersion=<VERSION>
+mvn versions:set -DnewVersion=$RELEASE_VERSION
 
 # Commit the version change
 git add .
-git commit -m "Release version <VERSION>"
+git commit -m "Release version $RELEASE_VERSION"
 ```
 
-### 3. Update Reproducible Build Timestamp
+### 4. Update Reproducible Build Timestamp
 
 This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
 
@@ -71,7 +86,7 @@ diff checksums1.txt checksums2.txt
 
 If the builds are reproducible, the checksums will be identical.
 
-### 4. Prepare the Release
+### 5. Prepare the Release
 
 Before releasing, ensure the project is ready:
 
@@ -80,40 +95,40 @@ Before releasing, ensure the project is ready:
 mvn clean package
 ```
 
-### 5. Push the Release Branch
+### 6. Push the Release Branch
 
 Push the release branch to GitHub:
 
 ```bash
 # Push the release branch
-git push origin release/<VERSION>
+git push origin release/$RELEASE_VERSION
 ```
 
 **Important**: Do not create a pull request to merge the release branch to main. Release branches are independent and are not merged back to main.
 
-### 6. Tag the Release
+### 7. Tag the Release
 
 Create the release tag on the release branch:
 
 ```bash
 # Ensure you're on the release branch
-git checkout release/<VERSION>
+git checkout release/$RELEASE_VERSION
 
 # Create and push the release tag
-git tag v<VERSION>
-git push origin v<VERSION>
+git tag v$RELEASE_VERSION
+git push origin v$RELEASE_VERSION
 ```
 
-### 7. Check Out the Release Tag
+### 8. Check Out the Release Tag
 
 Before deploying, check out the release tag:
 
 ```bash
 # Check out the release tag
-git checkout v<VERSION>
+git checkout v$RELEASE_VERSION
 ```
 
-### 8. Deploy to Maven Central
+### 9. Deploy to Maven Central
 
 Deploy the artifacts to Maven Central:
 
@@ -122,7 +137,7 @@ Deploy the artifacts to Maven Central:
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 9. Monitor and Publish Deployment
+### 10. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -133,9 +148,16 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 10. Update Main to Next Development Version
+### 11. Update Main to Next Development Version
 
-Update the SNAPSHOT version on main to the next development version:
+Update the SNAPSHOT version on main to the next development version. First, set the next development version as an environment variable:
+
+```bash
+# Set the next development version (e.g., 1.0.4)
+export NEXT_VERSION=1.0.4
+```
+
+Then update the version on main:
 
 ```bash
 # Switch to main
@@ -143,21 +165,21 @@ git checkout main
 git pull origin main
 
 # Create a new branch for the version update
-git checkout -b prepare-next-development-<NEXT-VERSION>
+git checkout -b prepare-next-development-$NEXT_VERSION
 
 # Update to next development version
-mvn versions:set -DnewVersion=<NEXT-VERSION>-SNAPSHOT
+mvn versions:set -DnewVersion=$NEXT_VERSION-SNAPSHOT
 
 # Commit the version change
 git add .
-git commit -m "Prepare for next development iteration: <NEXT-VERSION>-SNAPSHOT"
+git commit -m "Prepare for next development iteration: $NEXT_VERSION-SNAPSHOT"
 
 # Push the branch and create a pull request
-git push origin prepare-next-development-<NEXT-VERSION>
+git push origin prepare-next-development-$NEXT_VERSION
 ```
 
-Then create a pull request from `prepare-next-development-<NEXT-VERSION>` to `main` with:
-- Title: "Prepare for next development iteration: <NEXT-VERSION>-SNAPSHOT"
+Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `main` with:
+- Title: "Prepare for next development iteration: $NEXT_VERSION-SNAPSHOT"
 - Description: Updates version numbers for continued development
 
 After creating the pull request, merge it to main.
@@ -169,11 +191,11 @@ After release, verify the artifacts are available for download:
 1. **Direct repository check** (available immediately):
    ```bash
    # Test downloading the library
-   mvn dependency:get -Dartifact=com.elharo:propernouns:<VERSION>
+   mvn dependency:get -Dartifact=com.elharo:propernouns:$RELEASE_VERSION
    ```
 
 2. **Direct URL check** (available immediately):
-   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/<VERSION>/`
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/$RELEASE_VERSION/`
 
 3. **Maven Central Search** (may take several hours to update):
    - [Search results](https://search.maven.org/search?q=g:com.elharo)
