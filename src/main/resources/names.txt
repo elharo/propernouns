@@ -710,6 +710,7 @@ hélène
 helga
 helle
 helmut
+hemingway
 henderson
 hendrik
 hendriks
@@ -1006,6 +1007,7 @@ larson
 lászló
 laura
 laurent
+laurie
 layla
 léa
 leah
@@ -1580,6 +1582,7 @@ sosa
 soto
 soukup
 spencer
+spiegel
 stallman
 staněk
 šťastný
