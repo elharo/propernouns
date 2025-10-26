@@ -186,11 +186,13 @@ public class NamesTest {
   @Test
   public void testLanguageNames() {
     // Test language names that are not common nouns
+    assertTrue("Arabic should be recognized as a proper name", Names.isName("Arabic"));
     assertTrue("Chinese should be recognized as a proper name", Names.isName("Chinese"));
     assertTrue("Dutch should be recognized as a proper name", Names.isName("Dutch"));
     assertTrue("English should be recognized as a proper name", Names.isName("English"));
     assertTrue("French should be recognized as a proper name", Names.isName("French"));
     assertTrue("German should be recognized as a proper name", Names.isName("German"));
+    assertTrue("Hebrew should be recognized as a proper name", Names.isName("Hebrew"));
     assertTrue("Italian should be recognized as a proper name", Names.isName("Italian"));
     assertTrue("Japanese should be recognized as a proper name", Names.isName("Japanese"));
     assertTrue("Russian should be recognized as a proper name", Names.isName("Russian"));
