@@ -5,6 +5,7 @@ abdiel
 abdul
 abel
 abeyta
+abraham
 abril
 abshire
 acevedo
@@ -113,6 +114,7 @@ aponte
 april
 aquino
 arabic
+arafat
 aragon
 aranda
 araujo
@@ -165,6 +167,7 @@ bakker
 baláž
 balthazar
 banuelos
+barack
 barajas
 barba
 barbara
@@ -195,6 +198,7 @@ belén
 belle
 bellini
 beltran
+ben
 bender
 bénédicte
 beneš
@@ -765,6 +769,7 @@ hugo
 humbert
 hume
 humphrey
+hussein
 hütter
 ian
 ibarra
@@ -1254,6 +1259,7 @@ musil
 myers
 myhre
 myles
+nabil
 nadia
 næss
 nagy
@@ -1298,6 +1304,7 @@ nowak
 nunez
 nygård
 nyla
+obama
 öberg
 obrien
 ocasio
