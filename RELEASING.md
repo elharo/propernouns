@@ -33,17 +33,17 @@ echo $RELEASE_VERSION
 
 ### 2. Update Reproducible Build Timestamp
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the current date or the date of the last commit:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the timestamp of the last commit:
 
 ```bash
 # Ensure you're on main and have the latest changes
 git checkout main
 git pull origin main
 
-# Option 1: Use current date
-echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
+# Create a branch for the timestamp update
+git checkout -b update-timestamp-$RELEASE_VERSION
 
-# Option 2: Use the timestamp of the last commit
+# Generate the timestamp from the last commit
 echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
 ```
 
@@ -65,11 +65,17 @@ diff checksums1.txt checksums2.txt
 If the builds are reproducible, the checksums will be identical.
 
 ```bash
-# Commit the timestamp update on main
+# Commit the timestamp update
 git add pom.xml
 git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
-git push origin main
+git push origin update-timestamp-$RELEASE_VERSION
 ```
+
+Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main` with:
+- Title: "Update reproducible build timestamp for release $RELEASE_VERSION"
+- Description: Updates the build timestamp for reproducible builds
+
+After creating the pull request, merge it to main.
 
 ### 3. Create a release branch for the new version
 
