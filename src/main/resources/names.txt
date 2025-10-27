@@ -5,6 +5,7 @@ abdiel
 abdul
 abel
 abeyta
+abraham
 abril
 abshire
 acevedo
@@ -113,6 +114,7 @@ aponte
 april
 aquino
 arabic
+arafat
 aragon
 aranda
 araujo
@@ -165,6 +167,7 @@ bakker
 baláž
 balthazar
 banuelos
+barack
 barajas
 barba
 barbara
@@ -195,6 +198,7 @@ belén
 belle
 bellini
 beltran
+ben
 bender
 bénédicte
 beneš
@@ -273,6 +277,7 @@ burns
 byrd
 cabrera
 cade
+caesar
 cain
 calderon
 caldwell
@@ -764,6 +769,7 @@ hugo
 humbert
 hume
 humphrey
+hussein
 hütter
 ian
 ibarra
@@ -838,6 +844,7 @@ jean-pierre
 jeanne
 jędrzejczyk
 jef
+jeff
 jefferson
 jeffrey
 jelínek
@@ -1253,6 +1260,7 @@ musil
 myers
 myhre
 myles
+nabil
 nadia
 næss
 nagy
@@ -1297,6 +1305,7 @@ nowak
 nunez
 nygård
 nyla
+obama
 öberg
 obrien
 ocasio
@@ -1339,6 +1348,7 @@ parker
 parra
 pascal
 paschal
+patel
 patricia
 patrick
 patterson
@@ -1408,6 +1418,9 @@ raelyn
 raelynn
 rafael
 ragnheiður
+rahul
+rajeev
+rajiv
 ramirez
 ramírez
 ramon
