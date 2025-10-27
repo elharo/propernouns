@@ -31,37 +31,15 @@ You can verify it's set correctly:
 echo $RELEASE_VERSION
 ```
 
-### 2. Create a release branch for the new version
+### 2. Update Reproducible Build Timestamp
 
-Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the current date or the date of the last commit:
 
 ```bash
 # Ensure you're on main and have the latest changes
 git checkout main
 git pull origin main
 
-# Create the release branch for the new version
-git checkout -b release/$RELEASE_VERSION
-```
-
-### 3. Update Version Numbers
-
-Update the version in the POM from SNAPSHOT to the release version:
-
-```bash
-# Use Maven versions plugin to update the version
-mvn versions:set -DnewVersion=$RELEASE_VERSION
-
-# Commit the version change
-git add .
-git commit -m "Release version $RELEASE_VERSION"
-```
-
-### 4. Update Reproducible Build Timestamp
-
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
-
-```bash
 # Option 1: Use current date
 echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
 
@@ -85,6 +63,39 @@ diff checksums1.txt checksums2.txt
 ```
 
 If the builds are reproducible, the checksums will be identical.
+
+```bash
+# Commit the timestamp update on main
+git add pom.xml
+git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
+git push origin main
+```
+
+### 3. Create a release branch for the new version
+
+Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
+
+```bash
+# Ensure you're on main and have the latest changes
+git checkout main
+git pull origin main
+
+# Create the release branch for the new version
+git checkout -b release/$RELEASE_VERSION
+```
+
+### 4. Update Version Numbers
+
+Update the version in the POM from SNAPSHOT to the release version:
+
+```bash
+# Use Maven versions plugin to update the version
+mvn versions:set -DnewVersion=$RELEASE_VERSION
+
+# Commit the version change
+git add .
+git commit -m "Release version $RELEASE_VERSION"
+```
 
 ### 5. Prepare the Release
 
