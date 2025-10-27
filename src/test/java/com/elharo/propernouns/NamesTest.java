@@ -157,7 +157,7 @@ public class NamesTest {
     assertTrue("Saturday should be recognized as a proper name", Names.isName("Saturday"));
     assertTrue("Sunday should be recognized as a proper name", Names.isName("Sunday"));
     
-    // Test case insensitive
+    // Test case-insensitive
     assertTrue("monday should be recognized as a proper name (lowercase)", Names.isName("monday"));
     assertTrue("TUESDAY should be recognized as a proper name (uppercase)", Names.isName("TUESDAY"));
   }
@@ -169,7 +169,7 @@ public class NamesTest {
     assertTrue("February should be recognized as a proper name", Names.isName("February"));
     assertTrue("March should be recognized as a proper name", Names.isName("March"));
     assertTrue("April should be recognized as a proper name", Names.isName("April"));
-    assertTrue("May should be recognized as a proper name", Names.isName("May"));
+    assertFalse("May should not be recognized as a proper name", Names.isName("May"));
     assertTrue("June should be recognized as a proper name", Names.isName("June"));
     assertTrue("July should be recognized as a proper name", Names.isName("July"));
     assertTrue("August should be recognized as a proper name", Names.isName("August"));
@@ -178,8 +178,27 @@ public class NamesTest {
     assertTrue("November should be recognized as a proper name", Names.isName("November"));
     assertTrue("December should be recognized as a proper name", Names.isName("December"));
     
-    // Test case insensitive
+    // Test case-insensitive
     assertTrue("january should be recognized as a proper name (lowercase)", Names.isName("january"));
     assertTrue("DECEMBER should be recognized as a proper name (uppercase)", Names.isName("DECEMBER"));
+  }
+  
+  @Test
+  public void testLanguageNames() {
+    // Test language names that are not common nouns
+    assertTrue("Arabic should be recognized as a proper name", Names.isName("Arabic"));
+    assertTrue("Chinese should be recognized as a proper name", Names.isName("Chinese"));
+    assertTrue("Dutch should be recognized as a proper name", Names.isName("Dutch"));
+    assertTrue("English should be recognized as a proper name", Names.isName("English"));
+    assertTrue("French should be recognized as a proper name", Names.isName("French"));
+    assertTrue("German should be recognized as a proper name", Names.isName("German"));
+    assertTrue("Hebrew should be recognized as a proper name", Names.isName("Hebrew"));
+    assertTrue("Italian should be recognized as a proper name", Names.isName("Italian"));
+    assertTrue("Japanese should be recognized as a proper name", Names.isName("Japanese"));
+    assertTrue("Russian should be recognized as a proper name", Names.isName("Russian"));
+    
+    // Test case insensitive
+    assertTrue("chinese should be recognized as a proper name (lowercase)", Names.isName("chinese"));
+    assertTrue("FRENCH should be recognized as a proper name (uppercase)", Names.isName("FRENCH"));
   }
 }
