@@ -20,20 +20,20 @@ Add the library to your project using one of these dependency management tools:
 <dependency>
   <groupId>com.elharo</groupId>
   <artifactId>propernouns</artifactId>
-  <version>1.0</version>
+  <version>1.0.3</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation 'com.elharo:propernouns:1.0'
+implementation 'com.elharo:propernouns:1.0.3'
 ```
 
 ### Ivy
 
 ```xml
-<dependency org="com.elharo" name="propernouns" rev="1.0"/>
+<dependency org="com.elharo" name="propernouns" rev="1.0.3"/>
 ```
 
 ## Usage
@@ -74,7 +74,7 @@ src/main/resources/names.txt.
 Nouns that commonly serve as both names and common nouns will not be reported as names.
 
 Since this library was built for the purpose of determining word case, it does not include names
-from scripts that do not distinguish upper and lower case
+written in scripts that do not distinguish upper and lower case
 such as Chinese, Arabic, and Hebrew. Case is primarily a feature of Latin, Greek, and Cyrillic scripts.
 
 Some other lists of names:
