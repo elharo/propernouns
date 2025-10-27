@@ -201,6 +201,42 @@ Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `mai
 
 After creating the pull request, merge it to main.
 
+### 12. Update README Version
+
+After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
+
+```bash
+# Switch to main
+git checkout main
+git pull origin main
+
+# Create a new branch for the README update
+git checkout -b update-readme-$RELEASE_VERSION
+
+# Edit README.md and update all version references from the old version to $RELEASE_VERSION
+# The README contains version numbers in the Maven, Gradle, and Ivy dependency examples
+```
+
+Update the version numbers in the following sections of README.md:
+- Maven dependency example
+- Gradle dependency example  
+- Ivy dependency example
+
+```bash
+# Commit the README changes
+git add README.md
+git commit -m "Update README to version $RELEASE_VERSION"
+
+# Push the branch and create a pull request
+git push origin update-readme-$RELEASE_VERSION
+```
+
+Create a pull request from `update-readme-$RELEASE_VERSION` to `main` with:
+- Title: "Update README to version $RELEASE_VERSION"
+- Description: Updates version numbers in installation examples to reflect the newly released version
+
+After creating the pull request, merge it to main.
+
 ## Verification
 
 After release, verify the artifacts are available for download:
