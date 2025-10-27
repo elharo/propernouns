@@ -195,7 +195,8 @@ After release, verify the artifacts are available for download:
    ```
 
 2. **Direct URL check** (available immediately):
-   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/$RELEASE_VERSION/`
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/{version}/`
+   - Replace `{version}` with the actual version number (e.g., `1.0.1`)
 
 3. **Maven Central Search** (may take several hours to update):
    - [Search results](https://search.maven.org/search?q=g:com.elharo)
