@@ -112,6 +112,7 @@ antunez
 aponte
 april
 aquino
+arabic
 aragon
 aranda
 araujo
@@ -327,6 +328,7 @@ chavez
 chelsea
 chen
 chiara
+chinese
 chloe
 chloé
 chmielewski
@@ -457,6 +459,7 @@ duran
 durand
 dušek
 dustin
+dutch
 dvořák
 dylan
 eaton
@@ -508,6 +511,7 @@ emma
 emmett
 eneko
 engel
+english
 enrique
 enriquez
 enzo
@@ -589,6 +593,7 @@ františek
 frazier
 freddie
 frederick
+french
 freya
 freyja
 friday
@@ -618,6 +623,7 @@ gemma
 geoffrey
 george
 georgia
+german
 gianna
 gideon
 giordano
@@ -699,6 +705,7 @@ hawkins
 hayden
 hayes
 hayley
+hebrew
 hebert
 hector
 héctor
@@ -786,6 +793,7 @@ isaiah
 iselin
 isla
 israel
+italian
 ivan
 iván
 ivana
@@ -810,6 +818,7 @@ jamie
 jan
 janet
 january
+japanese
 janice
 jānis
 jankowski
@@ -1471,6 +1480,7 @@ ruggiero
 ruiter
 ruiz
 russell
+russian
 russo
 rut
 rūta
