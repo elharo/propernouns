@@ -136,7 +136,19 @@ git tag v$RELEASE_VERSION
 git push origin v$RELEASE_VERSION
 ```
 
-### 8. Check Out the Release Tag
+### 8. Create a GitHub Release
+
+After pushing the tag, create a GitHub release from the tag:
+
+1. Go to [GitHub Releases](https://github.com/elharo/propernouns/releases/new).
+2. In the "Choose a tag" dropdown, select `v$RELEASE_VERSION` (the tag you just pushed).
+3. Set the release title to "Version $RELEASE_VERSION" (e.g., "Version 1.0.3").
+4. In the description field, add release notes describing what changed in this version.
+5. Click "Publish release" to make the release public.
+
+The GitHub release provides a user-friendly way for people to download the release and see what changed.
+
+### 9. Check Out the Release Tag
 
 Before deploying, check out the release tag:
 
@@ -145,7 +157,7 @@ Before deploying, check out the release tag:
 git checkout v$RELEASE_VERSION
 ```
 
-### 9. Deploy to Maven Central
+### 10. Deploy to Maven Central
 
 Deploy the artifacts to Maven Central:
 
@@ -154,7 +166,7 @@ Deploy the artifacts to Maven Central:
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 10. Monitor and Publish Deployment
+### 11. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -165,7 +177,7 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 11. Update Main to Next Development Version
+### 12. Update Main to Next Development Version
 
 Update the SNAPSHOT version on main to the next development version. First, set the next development version as an environment variable:
 
@@ -201,7 +213,7 @@ Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `mai
 
 After creating the pull request, merge it to main.
 
-### 12. Update README Version
+### 13. Update README Version
 
 After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
 
