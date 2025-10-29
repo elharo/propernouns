@@ -247,8 +247,6 @@ After the release is published to Maven Central and the README is updated, creat
 4. In the description field, add release notes describing what changed in this version.
 5. Click "Publish release" to make the release public.
 
-The GitHub release provides a user-friendly way for people to download the release and see what changed.
-
 ## Verification
 
 After release, verify the artifacts are available for download:
