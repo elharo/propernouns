@@ -237,6 +237,16 @@ Create a pull request from `update-readme-$RELEASE_VERSION` to `main` with:
 
 After creating the pull request, merge it to main.
 
+### 13. Create a GitHub Release
+
+After the release is published to Maven Central and the README is updated, create a GitHub release from the tag:
+
+1. Go to [GitHub Releases](https://github.com/elharo/propernouns/releases/new).
+2. In the "Choose a tag" dropdown, select `v$RELEASE_VERSION` (the tag you pushed in step 7).
+3. Set the release title to "Version $RELEASE_VERSION" (e.g., "Version 1.0.3").
+4. In the description field, add release notes describing what changed in this version.
+5. Click "Publish release" to make the release public.
+
 ## Verification
 
 After release, verify the artifacts are available for download:
