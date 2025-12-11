@@ -378,8 +378,11 @@ chavez
 chelsea
 chen
 chiara
+<<<<<<< HEAD
 chile
 china
+=======
+>>>>>>> main
 chinese
 chloe
 chloé
@@ -562,6 +565,7 @@ elísabet
 elisabeth
 eliška
 eliza
+eliezer
 ella
 ellie
 elliot
@@ -710,8 +714,11 @@ geoffrey
 george
 georgia
 german
+<<<<<<< HEAD
 germany
 ghana
+=======
+>>>>>>> main
 gianna
 gideon
 giordano
@@ -801,6 +808,7 @@ hawkins
 hayden
 hayes
 hayley
+hebrew
 hebert
 hebrew
 hector
@@ -862,7 +870,10 @@ hugo
 humbert
 hume
 humphrey
+<<<<<<< HEAD
 hungary
+=======
+>>>>>>> main
 hussein
 hütter
 ian
@@ -901,7 +912,10 @@ isla
 islands
 israel
 italian
+<<<<<<< HEAD
 italy
+=======
+>>>>>>> main
 ivan
 iván
 ivana
@@ -926,6 +940,11 @@ james
 jamie
 jan
 janet
+<<<<<<< HEAD
+=======
+january
+japanese
+>>>>>>> main
 janice
 jānis
 jankowski
@@ -1311,8 +1330,11 @@ mathieu
 matt
 matteo
 matthew
+<<<<<<< HEAD
 mauritania
 mauritius
+=======
+>>>>>>> main
 maxwell
 maya
 mayer
@@ -1391,7 +1413,12 @@ morten
 moshowitz
 moskovitz
 mosley
+<<<<<<< HEAD
 mozambique
+=======
+moshowitz
+moskovitz
+>>>>>>> main
 mrázek
 muhammed
 mujo
@@ -1668,7 +1695,10 @@ ruggiero
 ruiter
 ruiz
 russell
+<<<<<<< HEAD
 russia
+=======
+>>>>>>> main
 russian
 russo
 rut
@@ -1812,8 +1842,11 @@ south sudan
 spain
 spencer
 spiegel
+<<<<<<< HEAD
 sri
 sri lanka
+=======
+>>>>>>> main
 stallman
 staněk
 šťastný
@@ -2086,7 +2119,10 @@ yang
 yara
 yaretzi
 yates
+<<<<<<< HEAD
 yemen
+=======
+>>>>>>> main
 yudkowsky
 yusra
 žáček

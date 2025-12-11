@@ -31,41 +31,19 @@ You can verify it's set correctly:
 echo $RELEASE_VERSION
 ```
 
-### 2. Create a release branch for the new version
+### 2. Update Reproducible Build Timestamp
 
-Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the timestamp of the last commit:
 
 ```bash
 # Ensure you're on main and have the latest changes
 git checkout main
 git pull origin main
 
-# Create the release branch for the new version
-git checkout -b release/$RELEASE_VERSION
-```
+# Create a branch for the timestamp update
+git checkout -b update-timestamp-$RELEASE_VERSION
 
-### 3. Update Version Numbers
-
-Update the version in the POM from SNAPSHOT to the release version:
-
-```bash
-# Use Maven versions plugin to update the version
-mvn versions:set -DnewVersion=$RELEASE_VERSION
-
-# Commit the version change
-git add .
-git commit -m "Release version $RELEASE_VERSION"
-```
-
-### 4. Update Reproducible Build Timestamp
-
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml to the current date or the date of the last commit:
-
-```bash
-# Option 1: Use current date
-echo "    <project.build.outputTimestamp>$(date -u +%Y-%m-%dT%H:%M:%SZ)</project.build.outputTimestamp>"
-
-# Option 2: Use the timestamp of the last commit
+# Generate the timestamp from the last commit
 echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
 ```
 
@@ -85,6 +63,45 @@ diff checksums1.txt checksums2.txt
 ```
 
 If the builds are reproducible, the checksums will be identical.
+
+```bash
+# Commit the timestamp update
+git add pom.xml
+git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
+git push origin update-timestamp-$RELEASE_VERSION
+```
+
+Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main` with:
+- Title: "Update reproducible build timestamp for release $RELEASE_VERSION"
+- Description: Updates the build timestamp for reproducible builds
+
+After creating the pull request, merge it to main.
+
+### 3. Create a release branch for the new version
+
+Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
+
+```bash
+# Ensure you're on main and have the latest changes
+git checkout main
+git pull origin main
+
+# Create the release branch for the new version
+git checkout -b release/$RELEASE_VERSION
+```
+
+### 4. Update Version Numbers
+
+Update the version in the POM from SNAPSHOT to the release version:
+
+```bash
+# Use Maven versions plugin to update the version
+mvn versions:set -DnewVersion=$RELEASE_VERSION
+
+# Commit the version change
+git add .
+git commit -m "Release version $RELEASE_VERSION"
+```
 
 ### 5. Prepare the Release
 
@@ -184,6 +201,52 @@ Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `mai
 
 After creating the pull request, merge it to main.
 
+### 12. Update README Version
+
+After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
+
+```bash
+# Switch to main
+git checkout main
+git pull origin main
+
+# Create a new branch for the README update
+git checkout -b update-readme-$RELEASE_VERSION
+
+# Edit README.md and update all version references from the old version to $RELEASE_VERSION
+# The README contains version numbers in the Maven, Gradle, and Ivy dependency examples
+```
+
+Update the version numbers in the following sections of README.md:
+- Maven dependency example
+- Gradle dependency example  
+- Ivy dependency example
+
+```bash
+# Commit the README changes
+git add README.md
+git commit -m "Update README to version $RELEASE_VERSION"
+
+# Push the branch and create a pull request
+git push origin update-readme-$RELEASE_VERSION
+```
+
+Create a pull request from `update-readme-$RELEASE_VERSION` to `main` with:
+- Title: "Update README to version $RELEASE_VERSION"
+- Description: Updates version numbers in installation examples to reflect the newly released version
+
+After creating the pull request, merge it to main.
+
+### 13. Create a GitHub Release
+
+After the release is published to Maven Central and the README is updated, create a GitHub release from the tag:
+
+1. Go to [GitHub Releases](https://github.com/elharo/propernouns/releases/new).
+2. In the "Choose a tag" dropdown, select `v$RELEASE_VERSION` (the tag you pushed in step 7).
+3. Set the release title to "Version $RELEASE_VERSION" (e.g., "Version 1.0.3").
+4. In the description field, add release notes describing what changed in this version.
+5. Click "Publish release" to make the release public.
+
 ## Verification
 
 After release, verify the artifacts are available for download:
@@ -195,8 +258,7 @@ After release, verify the artifacts are available for download:
    ```
 
 2. **Direct URL check** (available immediately):
-   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/{version}/`
-   - Replace `{version}` with the actual version number (e.g., `1.0.1`)
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/$RELEASE_VERSION/`
 
 3. **Maven Central Search** (may take several hours to update):
    - [Search results](https://search.maven.org/search?q=g:com.elharo)
