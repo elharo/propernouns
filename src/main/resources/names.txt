@@ -362,13 +362,11 @@ cécile
 cecilia
 céleste
 celine
-central
 central african republic
 černý
 cesar
 césar
 česlav
-chad
 chandler
 charles
 charlie
@@ -584,7 +582,6 @@ english
 enrique
 enriquez
 enzo
-equatorial
 equatorial guinea
 erick
 erik
@@ -1426,7 +1423,6 @@ netherlands
 neumann
 nevaeh
 nevis
-new
 new zealand
 ng
 nguyen
@@ -1451,7 +1447,6 @@ nolan
 nora
 norah
 nordahl
-north
 north macedonia
 norway
 november
@@ -1605,7 +1600,6 @@ remy
 rémy
 rene
 renee
-republic
 resnick
 reuter
 reyes
@@ -1683,7 +1677,6 @@ sacha
 saenz
 sæther
 sæunn
-saint
 saint kitts and nevis
 saint lucia
 saint vincent and the grenadines
@@ -1803,7 +1796,6 @@ sørensen
 sosa
 soto
 soukup
-south
 south africa
 south sudan
 spain
@@ -1879,7 +1871,6 @@ tess
 testa
 thailand
 thatcher
-the
 thea
 theo
 théo
@@ -1946,7 +1937,6 @@ uldis
 ullman
 ulrich
 unai
-united
 united arab emirates
 united kingdom
 united states
