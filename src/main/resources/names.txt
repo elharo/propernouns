@@ -97,7 +97,6 @@ amodei
 amy
 anastasia
 anaya
-and
 ander
 andersen
 anderson
@@ -378,11 +377,7 @@ chavez
 chelsea
 chen
 chiara
-<<<<<<< HEAD
 chile
-china
-=======
->>>>>>> main
 chinese
 chloe
 chloé
@@ -390,10 +385,8 @@ chmielewski
 christensen
 christine
 christopher
-chuck
 ciprián
 cisneros
-city
 clara
 clare
 clark
@@ -429,7 +422,6 @@ cortez
 cosgrove
 costa
 costa rica
-côte
 côte d'ivoire
 cotto
 courant
@@ -514,7 +506,6 @@ dominican
 dominican republic
 dominik
 dominiquette
-don
 donnelly
 donny
 donovan
@@ -714,11 +705,8 @@ geoffrey
 george
 georgia
 german
-<<<<<<< HEAD
 germany
 ghana
-=======
->>>>>>> main
 gianna
 gideon
 giordano
@@ -870,10 +858,7 @@ hugo
 humbert
 hume
 humphrey
-<<<<<<< HEAD
 hungary
-=======
->>>>>>> main
 hussein
 hütter
 ian
@@ -909,13 +894,9 @@ isabelle
 isaiah
 iselin
 isla
-islands
 israel
 italian
-<<<<<<< HEAD
 italy
-=======
->>>>>>> main
 ivan
 iván
 ivana
@@ -940,11 +921,8 @@ james
 jamie
 jan
 janet
-<<<<<<< HEAD
-=======
 january
 japanese
->>>>>>> main
 janice
 jānis
 jankowski
@@ -1330,11 +1308,8 @@ mathieu
 matt
 matteo
 matthew
-<<<<<<< HEAD
 mauritania
 mauritius
-=======
->>>>>>> main
 maxwell
 maya
 mayer
@@ -1413,12 +1388,7 @@ morten
 moshowitz
 moskovitz
 mosley
-<<<<<<< HEAD
 mozambique
-=======
-moshowitz
-moskovitz
->>>>>>> main
 mrázek
 muhammed
 mujo
@@ -1695,10 +1665,7 @@ ruggiero
 ruiter
 ruiz
 russell
-<<<<<<< HEAD
 russia
-=======
->>>>>>> main
 russian
 russo
 rut
@@ -1842,15 +1809,10 @@ south sudan
 spain
 spencer
 spiegel
-<<<<<<< HEAD
-sri
 sri lanka
-=======
->>>>>>> main
 stallman
 staněk
 šťastný
-states
 stefán
 štefan
 stefano
@@ -1863,7 +1825,6 @@ stępień
 steven
 stewart
 stokke
-strand
 strang
 stříbrný
 strøm
@@ -2119,10 +2080,7 @@ yang
 yara
 yaretzi
 yates
-<<<<<<< HEAD
 yemen
-=======
->>>>>>> main
 yudkowsky
 yusra
 žáček
