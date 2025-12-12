@@ -1,0 +1,1 @@
+b869f53abcf6598d174a1c59b12c61f9a5f2162ffe26677e245be70c0fcb90f5  target/propernouns-1.0.4-SNAPSHOT.jar
