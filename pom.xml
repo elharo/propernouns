@@ -7,7 +7,7 @@
   
   <groupId>com.elharo</groupId>
   <artifactId>propernouns</artifactId>
-  <version>1.0.4-SNAPSHOT</version>
+  <version>1.0.5-SNAPSHOT</version>
   <packaging>jar</packaging>
   
   <name>propernouns</name>
@@ -52,7 +52,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <project.build.outputTimestamp>2025-12-11T14:12:52Z</project.build.outputTimestamp>
+    <project.build.outputTimestamp>2025-12-12T14:22:55Z</project.build.outputTimestamp>
     <junit.version>4.13.2</junit.version>
   </properties>
   
