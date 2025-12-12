@@ -43,11 +43,9 @@ git pull origin main
 # Create a branch for the timestamp update
 git checkout -b update-timestamp-$RELEASE_VERSION
 
-# Generate the timestamp from the last commit
-echo "    <project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>"
+# Update the timestamp in pom.xml automatically
+sed -i "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml
 ```
-
-Update the property manually in pom.xml with the generated timestamp.
 
 To verify reproducibility:
 
