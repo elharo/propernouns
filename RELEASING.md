@@ -71,9 +71,13 @@ git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
 git push origin update-timestamp-$RELEASE_VERSION
 ```
 
-Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main` with:
-- Title: "Update reproducible build timestamp for release $RELEASE_VERSION"
-- Description: Updates the build timestamp for reproducible builds
+Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main`:
+
+```bash
+gh pr create --base main --head update-timestamp-$RELEASE_VERSION \
+  --title "Update reproducible build timestamp for release $RELEASE_VERSION" \
+  --body "Updates the build timestamp for reproducible builds"
+```
 
 After creating the pull request, merge it to main.
 
@@ -195,9 +199,13 @@ git commit -m "Prepare for next development iteration: $NEXT_VERSION-SNAPSHOT"
 git push origin prepare-next-development-$NEXT_VERSION
 ```
 
-Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `main` with:
-- Title: "Prepare for next development iteration: $NEXT_VERSION-SNAPSHOT"
-- Description: Updates version numbers for continued development
+Then create a pull request from `prepare-next-development-$NEXT_VERSION` to `main`:
+
+```bash
+gh pr create --base main --head prepare-next-development-$NEXT_VERSION \
+  --title "Prepare for next development iteration: $NEXT_VERSION-SNAPSHOT" \
+  --body "Updates version numbers for continued development"
+```
 
 After creating the pull request, merge it to main.
 
@@ -231,9 +239,13 @@ git commit -m "Update README to version $RELEASE_VERSION"
 git push origin update-readme-$RELEASE_VERSION
 ```
 
-Create a pull request from `update-readme-$RELEASE_VERSION` to `main` with:
-- Title: "Update README to version $RELEASE_VERSION"
-- Description: Updates version numbers in installation examples to reflect the newly released version
+Create a pull request from `update-readme-$RELEASE_VERSION` to `main`:
+
+```bash
+gh pr create --base main --head update-readme-$RELEASE_VERSION \
+  --title "Update README to version $RELEASE_VERSION" \
+  --body "Updates version numbers in installation examples to reflect the newly released version"
+```
 
 After creating the pull request, merge it to main.
 
