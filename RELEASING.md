@@ -43,7 +43,7 @@ git pull origin main
 # Create a branch for the timestamp update
 git checkout -b update-timestamp-$RELEASE_VERSION
 
-# Update the timestamp in pom.xml (cross-platform: works on macOS and Linux)
+# Update the timestamp in pom.xml
 sed -i.bak "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml && rm pom.xml.bak
 ```
 
