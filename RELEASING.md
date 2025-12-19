@@ -44,7 +44,7 @@ git pull origin main
 git checkout -b update-timestamp-$RELEASE_VERSION
 
 # Update the timestamp in pom.xml
-sed -i.bak "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml && rm pom.xml.bak
+sed -i "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml
 ```
 
 To verify reproducibility:
