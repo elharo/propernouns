@@ -374,6 +374,7 @@ charlotte
 chavez
 chelsea
 chen
+checkstyle
 chiara
 chile
 chinese
