@@ -201,4 +201,20 @@ public class NamesTest {
     assertTrue("chinese should be recognized as a proper name (lowercase)", Names.isName("chinese"));
     assertTrue("FRENCH should be recognized as a proper name (uppercase)", Names.isName("FRENCH"));
   }
+  
+  @Test
+  public void testToolNames() {
+    // Test tool/product names that are proper nouns
+    assertTrue("Checkstyle should be recognized as a proper name", Names.isName("Checkstyle"));
+    assertTrue("checkstyle should be recognized as a proper name (lowercase)", Names.isName("checkstyle"));
+    assertTrue("CHECKSTYLE should be recognized as a proper name (uppercase)", Names.isName("CHECKSTYLE"));
+    
+    assertTrue("IntelliJ should be recognized as a proper name", Names.isName("IntelliJ"));
+    assertTrue("intellij should be recognized as a proper name (lowercase)", Names.isName("intellij"));
+    assertTrue("INTELLIJ should be recognized as a proper name (uppercase)", Names.isName("INTELLIJ"));
+    
+    assertTrue("Microsoft should be recognized as a proper name", Names.isName("Microsoft"));
+    assertTrue("microsoft should be recognized as a proper name (lowercase)", Names.isName("microsoft"));
+    assertTrue("MICROSOFT should be recognized as a proper name (uppercase)", Names.isName("MICROSOFT"));
+  }
 }

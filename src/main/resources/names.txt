@@ -374,6 +374,7 @@ charlotte
 chavez
 chelsea
 chen
+checkstyle
 chiara
 chile
 chinese
@@ -875,6 +876,7 @@ ingemar
 ingrid
 ingunn
 inman
+intellij
 ionescu
 iran
 iraq
@@ -1339,6 +1341,7 @@ michalski
 michel
 mickiewicz
 micronesia
+microsoft
 miguel
 mihăilă
 mike
