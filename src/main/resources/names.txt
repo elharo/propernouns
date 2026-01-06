@@ -876,6 +876,7 @@ ingemar
 ingrid
 ingunn
 inman
+intellij
 ionescu
 iran
 iraq
@@ -1340,6 +1341,7 @@ michalski
 michel
 mickiewicz
 micronesia
+microsoft
 miguel
 mihăilă
 mike
