@@ -231,8 +231,6 @@ arya
 asher
 ashkin
 ashton
-ask
-aspect
 asser
 aston
 åström
@@ -475,7 +473,6 @@ brockhouse
 brodsky
 brooks
 broussard
-brown
 bruce
 brunei
 brunkow
@@ -487,7 +484,6 @@ bryndís
 bryson
 buchanan 
 buchner
-buck
 buckner
 bueno
 buisson
@@ -503,9 +499,7 @@ burns
 burton
 burundi
 butenandt
-butler
 byrd
-cabo
 cabrera
 cade
 caesar
@@ -549,7 +543,6 @@ carlson
 carlsson
 carmen
 carmona
-carol
 caroline
 carolyn
 carrasco
@@ -607,7 +600,6 @@ chloé
 chmielewski
 christensen
 christiaan
-christian
 christiane
 christine
 christophe
@@ -658,7 +650,6 @@ conor
 conte
 conti
 conway
-cook
 cooper
 copin
 coppola
@@ -684,7 +675,6 @@ courant
 cournand
 cox
 craig
-cram
 crawford
 cremer
 crick
@@ -696,7 +686,6 @@ crutzen
 cruz
 cuba
 cuevas
-curie
 curtis
 cvetana
 cyprus
@@ -780,7 +769,6 @@ deser
 desmond
 devin
 devoret
-diamond
 diana
 diaz
 dickinson
@@ -1123,8 +1111,8 @@ gambia
 gannon
 gao
 garcia
-garcía márquez
-garcía robles
+márquez
+robles
 garrett
 gärtner
 gary
@@ -1186,7 +1174,8 @@ glenn
 głowacki
 glück
 gobat
-gobind khorana
+gobind
+khorana
 godfrey
 goeppert
 goldie
@@ -1279,7 +1268,6 @@ håkon
 haldan
 haldane
 hale
-hall
 halldór
 halliday
 hamilton
@@ -1356,7 +1344,6 @@ helena
 helene
 hélène
 helga
-hell
 helle
 hellman
 helmut
@@ -1381,7 +1368,6 @@ herschbach
 hershey
 hershko
 herta
-hertz
 herzberg
 herzegovina
 herzegovina
@@ -1843,10 +1829,8 @@ lagerkvist
 lagerlöf
 laila
 lainey
-lam
 lama
 lamas
-lamb
 lamport
 lampson
 landau
@@ -1970,7 +1954,6 @@ lombardi
 longo
 lopez
 lópez
-lord
 lorentz
 lorenz
 lorenzo
@@ -2700,7 +2683,6 @@ rønningen
 röntgen
 roos
 roosevelt
-root
 rory
 rosales
 rosalyn
@@ -2758,7 +2740,6 @@ sadat
 saenz
 sæther
 sæunn
-saint
 saint kitts and nevis
 saint lucia
 saint vincent and the grenadines
@@ -2783,7 +2764,6 @@ san suu kyi
 sancar
 sanchez
 sánchez
-sand
 sandoval
 sanger
 sanna
@@ -2877,7 +2857,6 @@ shane
 shannon
 shapiro
 shapley
-sharp
 sharpe
 sharpless
 shaw
@@ -2977,6 +2956,7 @@ spencer
 sperry
 spiegel
 spitteler
+spock
 sri lanka
 stalin
 stallman
@@ -2992,7 +2972,6 @@ stefán
 štefan
 stefano
 stefánsson
-stein
 steinbeck
 steinberger
 steinman
@@ -3008,7 +2987,6 @@ stigler
 stiglitz
 stoddart
 stokke
-stone
 stonebraker
 störmer
 strang
@@ -3178,7 +3156,6 @@ trygve
 tsien
 tsui
 tsung
-tu
 tucker
 tuesday
 tufte
@@ -3202,7 +3179,6 @@ ullman
 ulrich
 unai
 undset
-unicef
 united arab emirates
 united kingdom
 united states
@@ -3224,7 +3200,6 @@ valeria
 valerie
 valérie
 valery
-valiant
 valle
 van dam
 van den berg
@@ -3276,8 +3251,6 @@ veselý
 viazovska
 vicente
 vickrey
-victor
-víctor
 victoria
 vidal
 vietnam
@@ -3509,3 +3482,7 @@ zvi
 þórðarson
 þórir
 þorsteinn
+gerrity
+betbeze
+gisleson
+dooley
