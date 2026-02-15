@@ -373,6 +373,7 @@ bertozzi
 bertram
 bertrand
 bērziņš
+betbeze
 beth
 bethe
 betty
@@ -493,7 +494,6 @@ bunche
 bunin
 burke
 burkina
-faso
 burnet
 burns
 burton
@@ -806,6 +806,7 @@ donnall
 donnelly
 donny
 donovan
+dooley
 đorđević
 doris
 dorothy
@@ -1111,8 +1112,6 @@ gambia
 gannon
 gao
 garcia
-márquez
-robles
 garrett
 gärtner
 gary
@@ -1142,6 +1141,7 @@ gerhard
 gerhart
 german
 germany
+gerrity
 gertrude
 gerty
 ghana
@@ -1163,6 +1163,7 @@ giosuè
 giovanni
 girard
 giselle
+gisleson
 giulia
 giulio
 gjellerup
@@ -1175,7 +1176,6 @@ głowacki
 glück
 gobat
 gobind
-khorana
 godfrey
 goeppert
 goldie
@@ -1369,7 +1369,6 @@ hershey
 hershko
 herta
 herzberg
-herzegovina
 herzegovina
 hess
 hesse
@@ -1710,6 +1709,7 @@ ketterle
 keyes
 khalid
 khan
+khorana
 kiana
 kiara
 kibble
@@ -2077,6 +2077,7 @@ markowitz
 markus
 marley
 marquez
+márquez
 marshall
 martín
 martina
@@ -2655,6 +2656,7 @@ roberts
 robertson
 robin
 robinson
+robles
 robson
 rocha
 rocío
@@ -3482,7 +3484,3 @@ zvi
 þórðarson
 þórir
 þorsteinn
-gerrity
-betbeze
-gisleson
-dooley
