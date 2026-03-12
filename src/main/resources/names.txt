@@ -172,7 +172,6 @@ anne
 annie
 anthony
 antigua
-antigua and barbuda
 antoine
 anton
 antoni
@@ -277,7 +276,6 @@ banerjee
 bangladesh
 banting
 banuelos
-bảo châu
 barack
 barajas
 bárány
@@ -441,7 +439,6 @@ bourgeois
 bovet
 bowen
 boyce
-boyd orr
 boyer
 boyle
 božidar
@@ -481,7 +478,7 @@ bryan
 bryant
 bryndís
 bryson
-buchanan 
+buchanan
 buchner
 buckner
 bueno
@@ -668,7 +665,6 @@ corrigan
 cortez
 cosgrove
 costa
-costa rica
 cotto
 courant
 cournand
@@ -731,18 +727,6 @@ davide
 davis
 davisson
 dawes
-de boer
-de graaf
-de groot
-de haan
-de jong
-de koning
-de leeuw
-de luca
-de ruiter
-de vries
-de waal
-de wit
 deaton
 debreu
 debye
@@ -1646,7 +1630,6 @@ kaiser
 kajita
 kalniņš
 kamden
-kamerlingh onnes
 kamiński
 kandel
 kane
@@ -2734,9 +2717,6 @@ sadat
 saenz
 sæther
 sæunn
-saint kitts and nevis
-saint lucia
-saint vincent and the grenadines
 sakaguchi
 sakharov
 sakmann
@@ -2755,8 +2735,6 @@ samuelson
 samuelsson
 samwise
 san
-san marino
-san suu kyi
 sancar
 sanchez
 sánchez
@@ -2768,7 +2746,6 @@ santiago
 santoro
 santos
 sao
-sao tome and principe
 sara
 sarah
 saramago
@@ -2782,7 +2759,6 @@ satoshi
 saturday
 satyarthi
 saudi
-saudi arabia
 saul
 saúl
 sauvage
@@ -2882,7 +2858,6 @@ sidney
 siegbahn
 sienkiewicz
 sierra
-sierra leone
 sifakis
 sigrid
 sigríður
@@ -2905,7 +2880,6 @@ sims
 sinclair
 singapore
 sinoussi
-sir frank
 sirleaf
 škoda
 skogen
@@ -2953,7 +2927,6 @@ sperry
 spiegel
 spitteler
 spock
-sri lanka
 stalin
 stallman
 staněk
@@ -3175,9 +3148,6 @@ ullman
 ulrich
 unai
 undset
-united arab emirates
-united kingdom
-united states
 unnur
 updike
 urbański
@@ -3198,17 +3168,6 @@ valerie
 valérie
 valery
 valle
-van dam
-van den berg
-van der velde
-van dijk
-van dongen
-van doorn
-van loon
-van oosten
-van rijn
-van vliet
-van wijk
 vance
 vane
 vaněk
@@ -3221,7 +3180,6 @@ varmus
 vasile
 vasquez
 vatican
-vatican city
 vaughan
 védís
 veen
@@ -3271,14 +3229,6 @@ vleck
 voevodsky
 vogel
 volhard
-von baeyer
-von behring
-von euler
-von frisch
-von heidenstam
-von laue
-von ossietzky
-von suttner
 vorel
 vos
 waals
