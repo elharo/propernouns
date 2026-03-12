@@ -3350,7 +3350,6 @@ wilhelm
 wilkes
 wilkins
 wilkinson
-will
 willa
 willard
 willem
@@ -3366,7 +3365,6 @@ windaus
 wineland
 winnie
 winston
-winter
 wirth
 wirtz
 wislawa
