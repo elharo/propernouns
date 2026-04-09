@@ -50,17 +50,10 @@ sed -i "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<pro
 To verify reproducibility:
 
 ```bash
-# Build twice and compare checksums
-mvn clean package
-sha256sum target/*.jar > checksums1.txt
-
-mvn clean package
-sha256sum target/*.jar > checksums2.txt
-
-diff checksums1.txt checksums2.txt
+./verify-reproducible-build.sh
 ```
 
-If the builds are reproducible, the checksums will be identical.
+If the builds are reproducible, the script exits with code 0 and prints "Build is reproducible."
 
 ```bash
 # Commit the timestamp update
