@@ -3,7 +3,7 @@
 # Usage: ./verify-reproducible-build.sh
 # Exit code 0 means the build is reproducible; non-zero means it is not.
 
-set -e
+set -euo pipefail
 
 TMPDIR_1=$(mktemp -d)
 TMPDIR_2=$(mktemp -d)
