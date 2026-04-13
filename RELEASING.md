@@ -16,63 +16,25 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-### 1. Set Release Version Environment Variable
+### 1. Prepare the Release
 
-Before starting the release process, set the release version as an environment variable. This allows you to copy and paste the commands below without editing version numbers.
-
-```bash
-# Set the release version (e.g., 1.0.3)
-export RELEASE_VERSION=1.0.3
-```
-
-You can verify it's set correctly:
+Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, pushes the branch, and creates a pull request.
 
 ```bash
-echo $RELEASE_VERSION
+eval "$(./prepare-release.sh)"
 ```
 
-### 2. Update Reproducible Build Timestamp
-
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the timestamp of the last commit:
+To preview actions without changing files:
 
 ```bash
-# Ensure you're on main and have the latest changes
-git checkout main
-git pull origin main
-
-# Create a branch for the timestamp update
-git checkout -b update-timestamp-$RELEASE_VERSION
-
-# Update the timestamp in pom.xml
-sed -i "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml
+./prepare-release.sh --dry-run
 ```
 
-To verify reproducibility:
+If release preparation encounters a problem, `prepare-release.sh` exits non-zero and prints an error message.
 
-```bash
-./verify-reproducible-build.sh
-```
+After the script creates the pull request, merge it to main.
 
-If the builds are reproducible, the script exits with code 0 and prints "Build is reproducible."
-
-```bash
-# Commit the timestamp update
-git add pom.xml
-git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
-git push origin update-timestamp-$RELEASE_VERSION
-```
-
-Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main`:
-
-```bash
-gh pr create --base main --head update-timestamp-$RELEASE_VERSION \
-  --title "Update reproducible build timestamp for release $RELEASE_VERSION" \
-  --body "Updates the build timestamp for reproducible builds"
-```
-
-After creating the pull request, merge it to main.
-
-### 3. Create a release branch for the new version
+### 2. Create a release branch for the new version
 
 Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
 
@@ -85,7 +47,7 @@ git pull origin main
 git checkout -b release/$RELEASE_VERSION
 ```
 
-### 4. Update Version Numbers
+### 3. Update Version Numbers
 
 Update the version in the POM from SNAPSHOT to the release version:
 
@@ -98,7 +60,7 @@ git add .
 git commit -m "Release version $RELEASE_VERSION"
 ```
 
-### 5. Prepare the Release
+### 4. Verify the Release Build
 
 Before releasing, ensure the project is ready:
 
@@ -107,7 +69,7 @@ Before releasing, ensure the project is ready:
 mvn clean package
 ```
 
-### 6. Push the Release Branch
+### 5. Push the Release Branch
 
 Push the release branch to GitHub:
 
@@ -118,7 +80,7 @@ git push origin release/$RELEASE_VERSION
 
 **Important**: Do not create a pull request to merge the release branch to main. Release branches are independent and are not merged back to main.
 
-### 7. Tag the Release
+### 6. Tag the Release
 
 Create the release tag on the release branch:
 
@@ -131,7 +93,7 @@ git tag v$RELEASE_VERSION
 git push origin v$RELEASE_VERSION
 ```
 
-### 8. Check Out the Release Tag
+### 7. Check Out the Release Tag
 
 Before deploying, check out the release tag:
 
@@ -140,7 +102,7 @@ Before deploying, check out the release tag:
 git checkout v$RELEASE_VERSION
 ```
 
-### 9. Deploy to Maven Central
+### 8. Deploy to Maven Central
 
 Deploy the artifacts to Maven Central:
 
@@ -149,7 +111,7 @@ Deploy the artifacts to Maven Central:
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 10. Monitor and Publish Deployment
+### 9. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -160,7 +122,7 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 11. Update Main to Next Development Version
+### 10. Update Main to Next Development Version
 
 Update the SNAPSHOT version on main to the next development version. First, set the next development version as an environment variable:
 
@@ -200,7 +162,7 @@ gh pr create --base main --head prepare-next-development-$NEXT_VERSION \
 
 After creating the pull request, merge it to main.
 
-### 12. Update README Version
+### 11. Update README Version
 
 After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
 
@@ -240,7 +202,7 @@ gh pr create --base main --head update-readme-$RELEASE_VERSION \
 
 After creating the pull request, merge it to main.
 
-### 13. Create a GitHub Release
+### 12. Create a GitHub Release
 
 After the release is published to Maven Central and the README is updated, create a GitHub release from the tag:
 
