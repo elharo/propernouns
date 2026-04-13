@@ -20,20 +20,20 @@ Add the library to your project using one of these dependency management tools:
 <dependency>
   <groupId>com.elharo</groupId>
   <artifactId>propernouns</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
 ### Gradle
 
 ```gradle
-implementation 'com.elharo:propernouns:1.0.4'
+implementation 'com.elharo:propernouns:1.0.5'
 ```
 
 ### Ivy
 
 ```xml
-<dependency org="com.elharo" name="propernouns" rev="1.0.4"/>
+<dependency org="com.elharo" name="propernouns" rev="1.0.5"/>
 ```
 
 ## Usage
