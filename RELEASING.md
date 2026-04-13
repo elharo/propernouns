@@ -16,12 +16,12 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
-### 1. Set Release Version Environment Variable
+### 1. Prepare the Release
 
-Before starting the release process, run the release preparation script. It first checks out `main` and pulls the latest changes, then sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
+Run the release preparation script. It first checks out `main` and pulls the latest changes, then sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
 
 ```bash
-# Run this and evaluate its output so RELEASE_VERSION is exported in your shell
+# Run this to export RELEASE_VERSION in your shell
 eval "$(./prepare-release.sh)"
 ```
 
@@ -30,8 +30,6 @@ You can verify it's set correctly:
 ```bash
 echo $RELEASE_VERSION
 ```
-
-### 2. Update Reproducible Build Timestamp
 
 This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. You can automate the branch setup, timestamp update, and commit with:
 
@@ -66,7 +64,7 @@ gh pr create --base main --head update-timestamp-$RELEASE_VERSION \
 
 After creating the pull request, merge it to main.
 
-### 3. Create a release branch for the new version
+### 2. Create a release branch for the new version
 
 Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
 
@@ -79,7 +77,7 @@ git pull origin main
 git checkout -b release/$RELEASE_VERSION
 ```
 
-### 4. Update Version Numbers
+### 3. Update Version Numbers
 
 Update the version in the POM from SNAPSHOT to the release version:
 
@@ -92,7 +90,7 @@ git add .
 git commit -m "Release version $RELEASE_VERSION"
 ```
 
-### 5. Prepare the Release
+### 4. Verify the Release Build
 
 Before releasing, ensure the project is ready:
 
@@ -101,7 +99,7 @@ Before releasing, ensure the project is ready:
 mvn clean package
 ```
 
-### 6. Push the Release Branch
+### 5. Push the Release Branch
 
 Push the release branch to GitHub:
 
@@ -112,7 +110,7 @@ git push origin release/$RELEASE_VERSION
 
 **Important**: Do not create a pull request to merge the release branch to main. Release branches are independent and are not merged back to main.
 
-### 7. Tag the Release
+### 6. Tag the Release
 
 Create the release tag on the release branch:
 
@@ -125,7 +123,7 @@ git tag v$RELEASE_VERSION
 git push origin v$RELEASE_VERSION
 ```
 
-### 8. Check Out the Release Tag
+### 7. Check Out the Release Tag
 
 Before deploying, check out the release tag:
 
@@ -134,7 +132,7 @@ Before deploying, check out the release tag:
 git checkout v$RELEASE_VERSION
 ```
 
-### 9. Deploy to Maven Central
+### 8. Deploy to Maven Central
 
 Deploy the artifacts to Maven Central:
 
@@ -143,7 +141,7 @@ Deploy the artifacts to Maven Central:
 mvn deploy -Prelease -DskipRemoteStaging -DaltStagingDirectory=/tmp/propernouns-deploy -Dmaven.install.skip
 ```
 
-### 10. Monitor and Publish Deployment
+### 9. Monitor and Publish Deployment
 
 Monitor and publish the deployment through the Central Portal:
 
@@ -154,7 +152,7 @@ Monitor and publish the deployment through the Central Portal:
 5. Once validation is complete, click the "Publish" button to release artifacts to Maven Central.
 6. Publication typically takes 10-30 minutes after clicking publish.
 
-### 11. Update Main to Next Development Version
+### 10. Update Main to Next Development Version
 
 Update the SNAPSHOT version on main to the next development version. First, set the next development version as an environment variable:
 
@@ -194,7 +192,7 @@ gh pr create --base main --head prepare-next-development-$NEXT_VERSION \
 
 After creating the pull request, merge it to main.
 
-### 12. Update README Version
+### 11. Update README Version
 
 After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
 
@@ -234,7 +232,7 @@ gh pr create --base main --head update-readme-$RELEASE_VERSION \
 
 After creating the pull request, merge it to main.
 
-### 13. Create a GitHub Release
+### 12. Create a GitHub Release
 
 After the release is published to Maven Central and the README is updated, create a GitHub release from the tag:
 
