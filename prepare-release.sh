@@ -83,6 +83,7 @@ elif git -C "$SCRIPT_DIR" diff --cached --quiet; then
 else
   run_cmd git -C "$SCRIPT_DIR" commit -m "Update reproducible build timestamp for release $RELEASE_VERSION" >&2
 fi
+run_cmd git -C "$SCRIPT_DIR" push -u origin "$BRANCH_NAME" >&2
 if [ "$DRY_RUN" = "true" ]; then
   echo "Dry run complete." >&2
 else

@@ -18,10 +18,9 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ### 1. Prepare the Release
 
-Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, and commits `pom.xml`.
+Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, and pushes the branch.
 
 ```bash
-# Run this to export RELEASE_VERSION in your shell
 eval "$(./prepare-release.sh)"
 ```
 
@@ -32,11 +31,6 @@ To preview actions without changing files:
 ```
 
 If release preparation encounters a problem, `prepare-release.sh` exits non-zero and prints an error message.
-
-```bash
-# Push the timestamp update branch
-git push origin update-timestamp-$RELEASE_VERSION
-```
 
 Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main`:
 
