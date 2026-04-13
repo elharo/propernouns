@@ -18,28 +18,20 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ### 1. Prepare the Release
 
-Run the release preparation script. It first checks out `main` and pulls the latest changes, then sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
+Run the release preparation script. It checks out `main`, pulls the latest changes, creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
 
 ```bash
 # Run this to export RELEASE_VERSION in your shell
 eval "$(./prepare-release.sh)"
 ```
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Next, automate the branch setup, timestamp update, and commit:
+To preview actions without changing files:
 
 ```bash
-./prepare-release.sh --automate-step-2
+./prepare-release.sh --dry-run
 ```
 
-If you want to preview actions first, run the same command with `--dry-run`.
-
-To verify reproducibility:
-
-```bash
-./verify-reproducible-build.sh
-```
-
-If the builds are reproducible, the script exits with code 0 and prints "Build is reproducible."
+If release preparation encounters a problem, `prepare-release.sh` exits non-zero and prints an error message.
 
 ```bash
 # Push the timestamp update branch

@@ -2,19 +2,15 @@
 
 set -euo pipefail
 
-AUTOMATE_STEP_2=false
 DRY_RUN=false
 for ARG in "$@"; do
   case "$ARG" in
-    --automate-step-2)
-      AUTOMATE_STEP_2=true
-      ;;
     --dry-run)
       DRY_RUN=true
       ;;
     *)
       echo "Unknown argument: $ARG" >&2
-      echo "Usage: ./prepare-release.sh [--automate-step-2] [--dry-run]" >&2
+      echo "Usage: ./prepare-release.sh [--dry-run]" >&2
       exit 1
       ;;
   esac
@@ -46,15 +42,13 @@ run_cmd() {
 run_cmd git -C "$SCRIPT_DIR" checkout main >&2
 run_cmd git -C "$SCRIPT_DIR" pull origin main >&2
 
-if [ "$AUTOMATE_STEP_2" = "true" ]; then
-  BRANCH_NAME="update-timestamp-$RELEASE_VERSION"
-  if [ "$DRY_RUN" = "true" ]; then
-    echo "[dry-run] git -C $SCRIPT_DIR checkout -b $BRANCH_NAME" >&2
-  elif git -C "$SCRIPT_DIR" rev-parse --verify "$BRANCH_NAME" >/dev/null 2>&1; then
-    run_cmd git -C "$SCRIPT_DIR" checkout "$BRANCH_NAME" >&2
-  else
-    run_cmd git -C "$SCRIPT_DIR" checkout -b "$BRANCH_NAME" >&2
-  fi
+BRANCH_NAME="update-timestamp-$RELEASE_VERSION"
+if [ "$DRY_RUN" = "true" ]; then
+  echo "[dry-run] git -C $SCRIPT_DIR checkout -b $BRANCH_NAME" >&2
+elif git -C "$SCRIPT_DIR" rev-parse --verify "$BRANCH_NAME" >/dev/null 2>&1; then
+  run_cmd git -C "$SCRIPT_DIR" checkout "$BRANCH_NAME" >&2
+else
+  run_cmd git -C "$SCRIPT_DIR" checkout -b "$BRANCH_NAME" >&2
 fi
 
 if ! TIMESTAMP=$(git -C "$SCRIPT_DIR" log -1 --format=%cI); then
@@ -81,15 +75,13 @@ else
 fi
 
 printf 'export RELEASE_VERSION=%q\n' "$RELEASE_VERSION"
-if [ "$AUTOMATE_STEP_2" = "true" ]; then
-  run_cmd git -C "$SCRIPT_DIR" add pom.xml
-  if [ "$DRY_RUN" = "true" ]; then
-    echo "[dry-run] git -C $SCRIPT_DIR commit -m \"Update reproducible build timestamp for release $RELEASE_VERSION\"" >&2
-  elif git -C "$SCRIPT_DIR" diff --cached --quiet; then
-    echo "No pom.xml changes to commit." >&2
-  else
-    run_cmd git -C "$SCRIPT_DIR" commit -m "Update reproducible build timestamp for release $RELEASE_VERSION" >&2
-  fi
+run_cmd git -C "$SCRIPT_DIR" add pom.xml
+if [ "$DRY_RUN" = "true" ]; then
+  echo "[dry-run] git -C $SCRIPT_DIR commit -m \"Update reproducible build timestamp for release $RELEASE_VERSION\"" >&2
+elif git -C "$SCRIPT_DIR" diff --cached --quiet; then
+  echo "No pom.xml changes to commit." >&2
+else
+  run_cmd git -C "$SCRIPT_DIR" commit -m "Update reproducible build timestamp for release $RELEASE_VERSION" >&2
 fi
 if [ "$DRY_RUN" = "true" ]; then
   echo "Dry run complete." >&2
