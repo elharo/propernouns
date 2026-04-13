@@ -39,7 +39,7 @@ run_cmd() {
   if [ "$DRY_RUN" = "true" ]; then
     echo "[dry-run] $*" >&2
   else
-    "$@" 1>&2
+    "$@" >&2
   fi
 }
 
