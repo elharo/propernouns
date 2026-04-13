@@ -21,7 +21,7 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 Before starting the release process, run the release preparation script. This sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
 
 ```bash
-# Run this with source so RELEASE_VERSION is available in your shell
+# Run this with source so RELEASE_VERSION is exported by the script
 source ./prepare-release.sh
 ```
 

@@ -88,4 +88,8 @@ if [ "$AUTOMATE_STEP_2" = "true" ]; then
     git -C "$SCRIPT_DIR" commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
   fi
 fi
-echo "Updated pom.xml project.build.outputTimestamp to $TIMESTAMP" >&2
+if [ "$DRY_RUN" = "true" ]; then
+  echo "Dry run complete." >&2
+else
+  echo "Updated pom.xml project.build.outputTimestamp to $TIMESTAMP" >&2
+fi
