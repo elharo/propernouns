@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 set -euo pipefail
 
@@ -16,7 +16,18 @@ else
 fi
 
 TIMESTAMP=$(git -C "$SCRIPT_DIR" log -1 --format=%cI)
+
+if ! grep -q "<project.build.outputTimestamp>" "$POM_FILE"; then
+  echo "Could not find <project.build.outputTimestamp> in $POM_FILE" >&2
+  exit 1
+fi
+
 TEMP_POM=$(mktemp)
+cleanup() {
+  rm -f "$TEMP_POM"
+}
+trap cleanup EXIT
+
 sed "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$TIMESTAMP</project.build.outputTimestamp>|" "$POM_FILE" > "$TEMP_POM"
 mv "$TEMP_POM" "$POM_FILE"
 
