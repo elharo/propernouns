@@ -21,8 +21,8 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 Before starting the release process, run the release preparation script. This sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
 
 ```bash
-# Run the script and evaluate its output to set RELEASE_VERSION in your shell
-eval "$(./prepare-release.sh)"
+# Run this with source so RELEASE_VERSION is available in your shell
+source ./prepare-release.sh
 ```
 
 You can verify it's set correctly:
@@ -33,16 +33,14 @@ echo $RELEASE_VERSION
 
 ### 2. Update Reproducible Build Timestamp
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. The release preparation script from step 1 also updates the `project.build.outputTimestamp` property in your local `pom.xml` to the timestamp of the last commit. Then continue with the branch and PR workflow:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. You can automate the branch setup, timestamp update, and commit with:
 
 ```bash
-# Ensure you're on main and have the latest changes
-git checkout main
-git pull origin main
+# Optional: preview actions without changing anything
+./prepare-release.sh --automate-step-2 --dry-run
 
-# Create a branch for the timestamp update
-git checkout -b update-timestamp-$RELEASE_VERSION
-
+# Apply step 2 automation
+./prepare-release.sh --automate-step-2
 ```
 
 To verify reproducibility:
@@ -54,9 +52,7 @@ To verify reproducibility:
 If the builds are reproducible, the script exits with code 0 and prints "Build is reproducible."
 
 ```bash
-# Commit the timestamp update
-git add pom.xml
-git commit -m "Update reproducible build timestamp for release $RELEASE_VERSION"
+# Push the timestamp update branch
 git push origin update-timestamp-$RELEASE_VERSION
 ```
 
