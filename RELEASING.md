@@ -25,21 +25,13 @@ Run the release preparation script. It first checks out `main` and pulls the lat
 eval "$(./prepare-release.sh)"
 ```
 
-You can verify it's set correctly:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Continue the same step by automating the branch setup, timestamp update, and commit:
 
 ```bash
-echo $RELEASE_VERSION
-```
-
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. You can automate the branch setup, timestamp update, and commit with:
-
-```bash
-# Optional: preview actions without changing anything
-./prepare-release.sh --automate-step-2 --dry-run
-
-# Apply step 2 automation
 ./prepare-release.sh --automate-step-2
 ```
+
+If you want to preview actions first, run the same command with `--dry-run`.
 
 To verify reproducibility:
 
