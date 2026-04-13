@@ -22,9 +22,10 @@ done
 
 SCRIPT_DIR=$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)
 POM_FILE="$SCRIPT_DIR/pom.xml"
+MVNW="$SCRIPT_DIR/mvnw"
 
-if ! PROJECT_VERSION=$(mvn -f "$POM_FILE" help:evaluate -Dexpression=project.version -q -DforceStdout); then
-  echo "Failed to read project version from $POM_FILE. Is Maven installed and is pom.xml valid?" >&2
+if ! PROJECT_VERSION=$("$MVNW" -f "$POM_FILE" help:evaluate -Dexpression=project.version -q -DforceStdout); then
+  echo "Failed to read project version from $POM_FILE using $MVNW. Ensure the Maven wrapper is available and pom.xml is valid." >&2
   exit 1
 fi
 if [[ "$PROJECT_VERSION" == *-SNAPSHOT ]]; then
