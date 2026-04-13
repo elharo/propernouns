@@ -25,7 +25,7 @@ Run the release preparation script. It first checks out `main` and pulls the lat
 eval "$(./prepare-release.sh)"
 ```
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Then automate the branch setup, timestamp update, and commit:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Next, automate the branch setup, timestamp update, and commit:
 
 ```bash
 ./prepare-release.sh --automate-step-2
