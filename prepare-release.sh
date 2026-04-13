@@ -78,6 +78,7 @@ else
   mv "$TEMP_POM" "$POM_FILE"
 fi
 
+echo "export RELEASE_VERSION=$RELEASE_VERSION"
 if [ "$AUTOMATE_STEP_2" = "true" ]; then
   run_cmd git -C "$SCRIPT_DIR" add pom.xml
   if [ "$DRY_RUN" = "true" ]; then
