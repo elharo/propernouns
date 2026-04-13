@@ -18,7 +18,7 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ### 1. Prepare the Release
 
-Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, and pushes the branch.
+Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, pushes the branch, and creates a pull request.
 
 ```bash
 eval "$(./prepare-release.sh)"
@@ -32,15 +32,7 @@ To preview actions without changing files:
 
 If release preparation encounters a problem, `prepare-release.sh` exits non-zero and prints an error message.
 
-Create a pull request from `update-timestamp-$RELEASE_VERSION` to `main`:
-
-```bash
-gh pr create --base main --head update-timestamp-$RELEASE_VERSION \
-  --title "Update reproducible build timestamp for release $RELEASE_VERSION" \
-  --body "Updates the build timestamp for reproducible builds"
-```
-
-After creating the pull request, merge it to main.
+After the script creates the pull request, merge it to main.
 
 ### 2. Create a release branch for the new version
 
