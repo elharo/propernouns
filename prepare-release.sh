@@ -89,10 +89,10 @@ if [ "$DRY_RUN" = "true" ]; then
   echo "[dry-run] gh pr create --base main --head $BRANCH_NAME --title \"Update reproducible build timestamp for release $RELEASE_VERSION\" --body \"Updates the build timestamp for reproducible builds\"" >&2
 else
   if ! command -v gh >/dev/null 2>&1; then
-    echo "GitHub CLI (gh) is required to create the pull request." >&2
+    echo "GitHub CLI (gh) is required to create the pull request. Install from https://cli.github.com/ or run with --dry-run to preview steps without creating a PR." >&2
     exit 1
   fi
-  EXISTING_PR_NUMBER=$(cd "$SCRIPT_DIR" && gh pr list --head "$BRANCH_NAME" --base main --state open --json number --jq '.[0].number')
+  EXISTING_PR_NUMBER=$(cd "$SCRIPT_DIR" && gh pr list --head "$BRANCH_NAME" --base main --state open --limit 1 --json number --template '{{range .}}{{.number}}{{end}}')
   if [ -n "$EXISTING_PR_NUMBER" ]; then
     echo "Pull request #$EXISTING_PR_NUMBER already exists for $BRANCH_NAME." >&2
   else
