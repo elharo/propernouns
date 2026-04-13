@@ -15,7 +15,10 @@ else
   RELEASE_VERSION="$PROJECT_VERSION"
 fi
 
-TIMESTAMP=$(git -C "$SCRIPT_DIR" log -1 --format=%cI)
+if ! TIMESTAMP=$(git -C "$SCRIPT_DIR" log -1 --format=%cI); then
+  echo "Failed to read the latest commit timestamp from git." >&2
+  exit 1
+fi
 
 if ! grep -q "<project.build.outputTimestamp>" "$POM_FILE"; then
   echo "Could not find <project.build.outputTimestamp> in $POM_FILE" >&2

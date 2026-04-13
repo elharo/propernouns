@@ -33,7 +33,7 @@ echo $RELEASE_VERSION
 
 ### 2. Update Reproducible Build Timestamp
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. The release preparation script from step 1 also updates the `project.build.outputTimestamp` property in `pom.xml` on main to the timestamp of the last commit. Then continue with the branch and PR workflow:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. The release preparation script from step 1 also updates the `project.build.outputTimestamp` property in your local `pom.xml` to the timestamp of the last commit. Then continue with the branch and PR workflow:
 
 ```bash
 # Ensure you're on main and have the latest changes
