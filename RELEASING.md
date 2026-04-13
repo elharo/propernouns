@@ -18,11 +18,11 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ### 1. Set Release Version Environment Variable
 
-Before starting the release process, set the release version as an environment variable. This allows you to copy and paste the commands below without editing version numbers.
+Before starting the release process, run the release preparation script. This sets the release version as an environment variable by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix.
 
 ```bash
-# Set the release version (e.g., 1.0.3)
-export RELEASE_VERSION=1.0.3
+# Run the script and evaluate its output to set RELEASE_VERSION in your shell
+eval "$(./prepare-release.sh)"
 ```
 
 You can verify it's set correctly:
@@ -33,7 +33,7 @@ echo $RELEASE_VERSION
 
 ### 2. Update Reproducible Build Timestamp
 
-This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. Before creating a release, update the `project.build.outputTimestamp` property in pom.xml on main to the timestamp of the last commit:
+This project implements [reproducible builds](https://reproducible-builds.org/), ensuring that builds are byte-for-byte identical regardless of when or where they are executed. The release preparation script from step 1 also updates the `project.build.outputTimestamp` property in `pom.xml` on main to the timestamp of the last commit. Then continue with the branch and PR workflow:
 
 ```bash
 # Ensure you're on main and have the latest changes
@@ -43,8 +43,6 @@ git pull origin main
 # Create a branch for the timestamp update
 git checkout -b update-timestamp-$RELEASE_VERSION
 
-# Update the timestamp in pom.xml
-sed -i "s|<project.build.outputTimestamp>.*</project.build.outputTimestamp>|<project.build.outputTimestamp>$(git log -1 --format=%cI)</project.build.outputTimestamp>|" pom.xml
 ```
 
 To verify reproducibility:
