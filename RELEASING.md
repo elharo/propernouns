@@ -16,6 +16,16 @@ For detailed setup instructions, see the [Central Portal Documentation](https://
 
 ## Release Process
 
+### 0. Set the Release Version (Optional but Recommended)
+
+For convenience, you can set the release version as an environment variable at the beginning of the release process. This allows you to copy and paste commands without editing:
+
+```bash
+export NEW_VERSION=1.0.3
+```
+
+If you don't set this variable, the release preparation script will automatically determine the version from `pom.xml`.
+
 ### 1. Prepare the Release
 
 Run the release preparation script. It checks out `main`, pulls the latest changes, and sets `RELEASE_VERSION` by reading the version from `pom.xml` and removing the `-SNAPSHOT` suffix. It also creates or reuses `update-timestamp-$RELEASE_VERSION`, updates `project.build.outputTimestamp`, commits `pom.xml`, pushes the branch, and creates a pull request.
@@ -38,6 +48,19 @@ After the script creates the pull request, merge it to main.
 
 Create a release branch from main. Main always has a SNAPSHOT version. The release branch will be updated to the release version and then tagged.
 
+If you set `NEW_VERSION` in step 0, use it:
+
+```bash
+# Ensure you're on main and have the latest changes
+git checkout main
+git pull origin main
+
+# Create the release branch for the new version
+git checkout -b release/$NEW_VERSION
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
+
 ```bash
 # Ensure you're on main and have the latest changes
 git checkout main
@@ -49,7 +72,20 @@ git checkout -b release/$RELEASE_VERSION
 
 ### 3. Update Version Numbers
 
-Update the version in the POM from SNAPSHOT to the release version:
+Update the version in the POM from SNAPSHOT to the release version.
+
+If you set `NEW_VERSION` in step 0:
+
+```bash
+# Use Maven versions plugin to update the version
+mvn versions:set -DnewVersion=$NEW_VERSION
+
+# Commit the version change
+git add .
+git commit -m "Release version $NEW_VERSION"
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
 
 ```bash
 # Use Maven versions plugin to update the version
@@ -71,7 +107,16 @@ mvn clean package
 
 ### 5. Push the Release Branch
 
-Push the release branch to GitHub:
+Push the release branch to GitHub.
+
+If you set `NEW_VERSION` in step 0:
+
+```bash
+# Push the release branch
+git push origin release/$NEW_VERSION
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
 
 ```bash
 # Push the release branch
@@ -82,7 +127,20 @@ git push origin release/$RELEASE_VERSION
 
 ### 6. Tag the Release
 
-Create the release tag on the release branch:
+Create the release tag on the release branch.
+
+If you set `NEW_VERSION` in step 0:
+
+```bash
+# Ensure you're on the release branch
+git checkout release/$NEW_VERSION
+
+# Create and push the release tag
+git tag v$NEW_VERSION
+git push origin v$NEW_VERSION
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
 
 ```bash
 # Ensure you're on the release branch
@@ -95,7 +153,16 @@ git push origin v$RELEASE_VERSION
 
 ### 7. Check Out the Release Tag
 
-Before deploying, check out the release tag:
+Before deploying, check out the release tag.
+
+If you set `NEW_VERSION` in step 0:
+
+```bash
+# Check out the release tag
+git checkout v$NEW_VERSION
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
 
 ```bash
 # Check out the release tag
@@ -166,6 +233,44 @@ After creating the pull request, merge it to main.
 
 After the release is published to Maven Central, update the version numbers in README.md to reference the newly released version.
 
+If you set `NEW_VERSION` in step 0:
+
+```bash
+# Switch to main
+git checkout main
+git pull origin main
+
+# Create a new branch for the README update
+git checkout -b update-readme-$NEW_VERSION
+
+# Edit README.md and update all version references from the old version to $NEW_VERSION
+# The README contains version numbers in the Maven, Gradle, and Ivy dependency examples
+```
+
+Update the version numbers in the following sections of README.md:
+- Maven dependency example
+- Gradle dependency example  
+- Ivy dependency example
+
+```bash
+# Commit the README changes
+git add README.md
+git commit -m "Update README to version $NEW_VERSION"
+
+# Push the branch and create a pull request
+git push origin update-readme-$NEW_VERSION
+```
+
+Create a pull request from `update-readme-$NEW_VERSION` to `main`:
+
+```bash
+gh pr create --base main --head update-readme-$NEW_VERSION \
+  --title "Update README to version $NEW_VERSION" \
+  --body "Updates version numbers in installation examples to reflect the newly released version"
+```
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
+
 ```bash
 # Switch to main
 git checkout main
@@ -206,6 +311,16 @@ After creating the pull request, merge it to main.
 
 After the release is published to Maven Central and the README is updated, create a GitHub release from the tag:
 
+If you set `NEW_VERSION` in step 0:
+
+1. Go to [GitHub Releases](https://github.com/elharo/propernouns/releases/new).
+2. In the "Choose a tag" dropdown, select `v$NEW_VERSION` (the tag you pushed in step 7).
+3. Set the release title to "Version $NEW_VERSION" (e.g., "Version 1.0.3").
+4. In the description field, add release notes describing what changed in this version.
+5. Click "Publish release" to make the release public.
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
+
 1. Go to [GitHub Releases](https://github.com/elharo/propernouns/releases/new).
 2. In the "Choose a tag" dropdown, select `v$RELEASE_VERSION` (the tag you pushed in step 7).
 3. Set the release title to "Version $RELEASE_VERSION" (e.g., "Version 1.0.3").
@@ -214,7 +329,24 @@ After the release is published to Maven Central and the README is updated, creat
 
 ## Verification
 
-After release, verify the artifacts are available for download:
+After release, verify the artifacts are available for download.
+
+If you set `NEW_VERSION` in step 0:
+
+1. **Direct repository check** (available immediately):
+   ```bash
+   # Test downloading the library
+   mvn dependency:get -Dartifact=com.elharo:propernouns:$NEW_VERSION
+   ```
+
+2. **Direct URL check** (available immediately):
+   - Library: `https://repo1.maven.org/maven2/com/elharo/propernouns/$NEW_VERSION/`
+
+3. **Maven Central Search** (may take several hours to update):
+   - [Search results](https://search.maven.org/search?q=g:com.elharo)
+   - Note: Search indexing can lag behind artifact availability by many hours
+
+Otherwise, use `RELEASE_VERSION` (set by the preparation script):
 
 1. **Direct repository check** (available immediately):
    ```bash
